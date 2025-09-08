@@ -1,0 +1,1029 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>China Scholarship</title>
+  <style>
+    html, body {
+		box-sizing: border-box;
+		margin: 0; 
+		padding: 0.3em;
+	  }
+	  
+    body {
+		font-family:publico;
+		background-color:#FFFBEB;
+		overflow-x: hidden;
+	  }
+
+    .banner {
+		background: linear-gradient(to bottom, #990000, #ea3b52);
+		color: white;
+		padding: 1.5em;
+		text-align: center;
+		border-radius: 25px;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+	  }
+    .banner h1 {
+		font-size: 2.35em;
+		font-family:pt-serif;
+		color: white;
+		text-shadow:
+        -1px -1px 0 black,
+         1px -1px 0 black,
+        -1px  1px 0 black,
+         1px  1px 0 black;
+		margin-bottom: 0.2em;
+	  }
+
+	  .banner h3 {
+		  margin-top: 0;
+		  font-size: 1.35em;
+		  color:white;
+	  }
+	  
+	  .banner a {
+		  display: inline-block;           
+		  padding: 0.4em 0.9em;            
+		  border-radius: 5px;       
+		  transition: background 0.3s, box-shadow 0.3s;
+		  text-decoration: none;
+	  }
+	  .banner a:hover {
+		  background: rgba(195, 195, 195, 0.27);  
+		  cursor: pointer;                   
+	  }
+
+	nav { 
+		background: #fddb53;
+		border-radius: 15px;
+		box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+		position: sticky;
+        top: 0;
+        z-index: 1000;
+	  }
+	  
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+	  gap:80px;
+	  font-size:1.15em;
+    }
+	  
+    nav ul li {
+      position: relative;
+      margin: 0 0.5em;
+    }
+	  
+   nav ul li > a,
+   nav ul li .natv-btn {
+      color: white;
+      background: none;
+      border: none;
+      padding: 1.16em;
+      font-size: 1em;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      transition: background-color 0.25s ease-out, color 0.25s ease-out;
+   }
+
+   nav ul li > a:hover,
+   nav ul li > a:focus,
+   nav ul li > a:active,
+   nav ul li .natv-btn:hover,
+   nav ul li .natv-btn:focus,
+   nav ul li .natv-btn:active {
+      background-color: #EBB105;
+      color: #ffffff;
+   }
+ 
+    .natv-btn,
+    nav ul li > a {
+      color: white;
+      background: none;
+      border: none;
+      padding: 1em;
+      text-decoration: none;
+      font-size: 1em;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .natv-btn .arrow {
+		color:black;
+      display: inline-block;
+      margin-left: 0.3em;
+      font-size: 0.65em;
+      transition: transform 0.3s ease;
+    }
+    
+	 .nav-text{
+		 font-family:publico; 
+		 font-size:1.1em; 
+		 color:black;
+	  }
+	  
+    .submenu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: white;
+      color: #775F00;
+      border: 1px solid #ccc;
+      min-width: 8em;
+      display: none;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+	  
+    .submenu a {
+      display: block;
+      padding: 0.75em 1em;
+      text-decoration: none;
+      color: inherit;
+    }
+	  
+    .submenu a:hover {
+      background: #efefef;
+    }
+
+    .dropdown.is-open .submenu {
+      display: block;
+    }
+	  
+    .dropdown.is-open .arrow {
+      transform: rotate(180deg);
+    }
+	  
+	[id] {
+  scroll-margin-top: 100px;
+}
+	  .mobile-header {
+		  display: none;
+		  position: absolute;
+		  top: 15px;
+		  right: 15px;
+		  z-index: 2001;
+	  }
+	  
+	  .hamburger {
+		  background: none;
+		  border: none;
+		  color: white;
+		  font-size: 1.9rem;
+		  cursor: pointer;
+		  padding: 6px;
+	  }
+
+	  .mobile-overlay {
+		  display: none;
+		  position: fixed;
+		  inset: 0;
+		  background: rgba(0,0,0,0.35);
+		  z-index: 1999;
+		  opacity: 0;
+		  transition: opacity .25s ease;
+	  }
+	  
+	  .mobile-overlay.show { 
+		  display:block;
+		  opacity:1; 
+	  }
+	 
+	  .mobile-nav {
+		  position: fixed;
+		  top: 0;
+		  right: -280px;
+		  width: 280px;
+		  height: 100%;
+		  background: #C7A622;     
+		  box-shadow: -4px 0 12px rgba(0,0,0,.4);
+		  transition: right .32s ease;
+		  z-index: 2000;
+		  padding-top: 60px;      
+		  overflow-y: auto;
+	  }
+
+.mobile-nav.open { 
+	right: 0; 
+	  }
+
+	  .mobile-nav ul { 
+		  display: block !important;
+		  margin: 0; 
+		  padding: 0;
+		  list-style: none; 
+	  }
+	  .mobile-nav li { 
+		  display: block !important;
+		  border-bottom: 1px solid rgba(255,255,255,0.12);
+	  }
+	  
+	  .mobile-nav a,
+	  .mobile-nav .natv-btn {
+		  display: block !important;
+		  width: 100%;
+		  text-align: left; 
+		  padding: 14px 16px;
+		  color: #fff; 
+		  text-decoration: none; 
+		  background: none;
+		  border: 0; 
+		  cursor: pointer;
+		  font-family: publico;
+		  font-size: 1rem; 
+	  }
+	  .mobile-nav a:hover,
+	  .mobile-nav .natv-btn:hover {
+		  background: rgba(0,0,0,0.08);
+	  }
+	  
+	  @media (max-width: 991px) {
+		  .mobile-header { 
+			  display: block;
+		  }
+		  
+		  nav:not(.mobile-nav) {
+			  display: none !important; } 
+	  }
+	  @media (min-width: 992px) {
+		  .mobile-header, .mobile-nav, .mobile-overlay { 
+			  display: none !important; 
+		  }
+	  }
+	  
+	.main { 
+		display: flex;
+		flex-grow: 1;
+		padding: 0;
+		padding-top:3px;
+		padding-bottom: 20px;
+		gap: 20px;
+	  }
+	  
+	  main.main > section.scholinfo {
+		  flex: 3
+	  }
+	  main.main > aside.modern-nav {
+		  flex: 1; 
+	  }
+	
+    .scholinfo { 
+		background-color: #FFFFFF;
+		border: 1px solid #ddd;
+		padding: 20px;
+		flex: 3; 
+		border-radius:23px ;
+		box-shadow:0 2px 10px rgba(0,0,0,0.08);
+		scroll-margin-top: 100px;
+	  }
+	  
+	  .scholinfo h3 {
+		  font-size: 1.5em;
+		  color: #5F1515;
+		  text-shadow: 0 0 3px gray;
+		  letter-spacing: 2px;
+	  }
+	  
+	  .scholinfo p {
+		  font-size: 1.05em;
+	  }
+	  
+    .mainschol {
+		background-color: #FFF1F2;
+		border: 0.6px solid #ccc;
+		padding: 25px;
+		margin-bottom: 15px;
+		border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+		transition: transform 0.2s, box-shadow 0.2s;
+		display: flex;
+        align-items: flex-start;     
+        gap: 1rem;                   
+        margin-bottom: 1.5rem;  
+	  }
+	  
+	   .mainschol:hover {
+		transform: translateY(-7px);
+		box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+	  }
+	  
+	  .mainschol-more {
+		  display: none;
+	  }
+	  .mainschol-more.expanded {
+		  display: block;
+	  }
+	  
+	  .read-more {
+		  cursor: pointer;
+		  color:hsla(356,35%,46%,1.00);
+		  font-weight: bolder;
+	  }
+	  
+	  .read-more-carousel {
+		  display: inline-block;  
+		  margin-top: 20px;      
+	  }
+	  
+	  .carousel-container {
+		  max-width: 800px;
+		  border: 1px solid #ddd;
+		  border-radius: 10px;
+		  padding: 20px;
+		  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+		  text-align: center;
+	  }
+
+  .carousel-item {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .carousel-item.active {
+    display: flex;
+  }
+
+  .carousel-item img {
+    max-width: 250px;
+    border-radius: 10px;
+  }
+
+  .carousel-info {
+    text-align: left;
+  }
+
+  .carousel-info h4 {
+	  color: #6B1112;
+    margin: 0 0 10px;
+    font-size: 1.44rem;
+  }
+
+  .carousel-info p {
+    margin: 0;
+    font-size: 1rem;
+  }
+
+  .carousel-buttons {
+    margin-top: 20px;
+  }
+
+  .carousel-buttons button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #990000;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .carousel-buttons button:hover {
+    background-color: #ea3b52;
+  }
+
+  @media (max-width: 768px) {
+    .carousel-item {
+      flex-direction: column;
+    }
+
+    .carousel-item img {
+      max-width: 80%;
+    }
+
+    .carousel-info {
+      text-align: center;
+    }
+  }
+	  
+	  .apply-list li {
+		  margin-bottom: 12px;
+		  line-height: 1.27em;  
+	  }
+	  
+	  .tips-list li {
+		  margin-bottom: 12px;
+		  line-height: 1.22em;  
+	  }
+	  
+    .modern-nav {
+		grid-area: nav; 
+		background-color:  rgba(215, 124, 124, 0.48);
+		padding: 25px 0;
+		border-radius: 10px;
+		box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+		max-width: 21em;
+		position: sticky;
+		top: 78.5px;  
+		align-self: start;
+}
+	  
+	  .modern-nav ul { 
+		  list-style: none; 
+		  padding: 0;
+		  margin: 0; 
+	  }
+	  .modern-nav li a {
+		  display: block;
+		  padding: 15px 25px;
+		  color: white;
+		  text-decoration: none;
+		  transition: background-color 0.3s ease, padding-left 0.3s ease;
+	  }
+	  
+	  .modern-nav li a:hover, .modern-nav li a.active {
+		  background-color: #B15D5D;
+		  padding-left: 30px; 
+	  }
+	  
+	 .schol-menu li a {
+		 text-decoration: underline!important;
+		 color: #530000 !important;
+	  }
+	  
+	  .login-icon {
+		  position: absolute;
+		  right: 20px;
+		  top: 20px;
+		  width: 45px;
+		  height: 45px;
+		  cursor: pointer;
+		  border-radius: 50%;
+	  }
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 3000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+}
+.modal-content {
+  background: white;
+  margin: 8% auto;
+  padding: 25px;
+  width: 320px;
+  border-radius: 10px;
+  text-align: center;
+  position: relative;
+}
+.modal-content img {
+  width: 100px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+.modal-content input {
+  width: 88%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.modal-content button {
+  width: 95%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 8px;
+  cursor: pointer;
+}
+	  
+.login-btn { 
+	background: #7dc27d;
+	color: white; 
+	  }
+.cancel-btn { 
+	background: #f36c60; 
+	color: white;
+	  }
+
+.modal .close {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+	  .mobile-auth{
+		  margin-top: 3em;
+	  }
+	  
+@media (max-width: 991px) {
+  .login-icon { display: none; }
+  .mobile-auth { display: block !important; }
+}
+@media (min-width: 992px) {
+  .mobile-auth { display: none !important; }
+}
+	  
+	  @media (max-width: 576px) {
+  .banner h1 {
+    font-size: 1.6em;
+  }
+  .banner h3 {
+    font-size: 1em;
+  }
+  main.main {
+    flex-direction: column;
+    padding: 15px;
+    gap: 15px;
+  }
+  .scholinfo {
+    padding: 15px;
+    font-size: 0.95rem;
+  }
+  nav.modern-nav,
+  .modern-nav {
+	  display: none !important; 
+		  }
+		  
+  footer {
+    font-size: 0.9rem;
+    padding: 15px;
+  }
+}
+	  }
+	  
+@media (min-width: 577px) and (max-width: 991px) {
+  .banner h1 {
+    font-size: 2em;
+  }
+  .banner h3 {
+    font-size: 1.2em;
+  }
+  main.main {
+    flex-direction: column;
+    padding: 50px 20px 20px 20px;
+    gap: 18px;
+  }
+  .scholinfo {
+    padding: 20px;
+  }
+	  }
+	
+  </style>
+</head>
+	
+<body>
+
+    <div class="banner">
+    <a href="Main.html">
+		<h1>Mandarin Minds</h1>
+		<h3>Resources and scholarships for curious minds!</h3>
+	  </a>
+		<img src="avatar.png" alt="Login" class="login-icon" id="desktopLogin">
+  </div>
+
+	<div class="mobile-header">
+  <button class="hamburger" id="hamburger" aria-expanded="false" aria-controls="mobileNav">&#9776;</button>
+</div>
+<div class="mobile-overlay" id="mobileOverlay" aria-hidden="true"></div>
+<nav class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <ul>
+    <li>
+	  <a href="Home.html">Home</a>
+	  <a href="Scholarship.html">Scholarship</a>
+	  <a href="Courses.html">Courses</a>
+      <a href="Contact.html">Contact</a>
+    </li>
+	  <li class="mobile-auth">
+		  <a href="#" id="mobileLogin">Login</a>
+		  <a href="#">Logout</a>
+	  </li>
+  </ul>
+</nav>
+	
+  <nav>
+    <ul>
+        <li class="dropdown">
+        <button class="natv-btn">
+			<span class="nav-text">Home</span> <span class="arrow">▼</span>
+        </button>
+        <div class="submenu">
+          <a href="Home.html#intro">Introduction to Our Website</a>
+		  <a href="Home.html#faqs">FAQs about us</a>
+		  <a href="Home.html#uni">China Universities</a>
+        </div>
+      </li>
+
+      <li class="dropdown">
+        <button class="natv-btn">
+        <span class="nav-text">Scholarship</span> <span class="arrow">▼</span>
+        </button>
+        <div class="submenu">
+          <a href="Scholarship.html">Scholarship List</a>
+        </div>
+      </li>
+
+      <li class="dropdown">
+        <button class="natv-btn">
+         <span class="nav-text">Courses</span> <span class="arrow">▼</span>
+        </button>
+        <div class="submenu">
+          <a href="Courses.html#courses">Courses</a>
+		  <a href="Courses.html#app">Applications</a>
+		  <a href="Courses.html#yt">Youtube Channels</a>
+          <a href="Courses.html#books">Books</a>
+        </div>
+      </li>
+
+      <li style="font-size:1.15em;"><a href="Contact.html"  style="color: black;">Contact</a></li>
+    </ul>
+  </nav>
+
+	<div id="loginModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <img src="avatar.png" alt="User">
+    <h2>Login</h2>
+    <input type="text" placeholder="Username">
+    <input type="password" placeholder="Password">
+    <button class="login-btn">Login</button>
+    <button class="cancel-btn">Cancel</button>
+  </div>
+</div>
+	
+  <main class="main">
+    <section class="scholinfo">
+      <h2 style="margin-top: 0; border-bottom: 3px solid #B11218; padding-bottom: 12px; margin-bottom: 20px; font-size:1.9em;">China University Scholarship</h2>
+      <p>This Scholarship page will show you the scholarships in China and its brief information to help you decide about it.</p>
+		
+      <article class="mainschol">
+		  <div class="mainschol1" id="mainschol1">
+			  <h3>China Scholarship Council (CSC)</h3>
+			  <p>This scholarship is a 100% non-repayable award funded by the government.<br> There are 3 types, which are</p>
+			  <ul>
+				  <li>🅰️ Type A - You can apply for this scholarship through government-related organizations such as the Chinese Embassy in Thailand, universities, or other programs. Each organization has its own way of selecting students, so if you’re interested in a specific program, you can look into it further. In Thailand, Type A scholarships are not often available anymore, but there are still a few left.</li>
+				  <li>🅱️ Type B - This type of scholarship comes directly from the university. You can apply for it yourself through the university’s website, and it’s also the most popular type among applicants. Type B is further divided into three categories: the regular Type B, Type B High-Level (for Master’s and PhD only), and Type B Silk Road (only available for students from countries along the Silk Road. Each university has its own list of eligible countries, so you’ll need to check carefully).</li>
+				  <li>🔠 Type C - his type of scholarship is offered through cooperation between the applicant’s government and the Chinese government, as well as through other special programs. However, it’s not available in Thailand.</li>
+			  </ul>
+
+			  <div class="mainschol-more">
+			  <p>Aside from scholarship, Recipients receive: Tuition fee coverage, Accommodation support, Insurance fee, Monthly living expenses.</p>
+				  <p>The living expenses rates by degree level:
+					  <ul>
+				  <li>🎓 Bachelor’s: 2,500 Yuan/month</li>
+				  <li>🎓 Master’s: 3,000 Yuan/month</li>
+				  <li>🎓 Doctorate: 3,500 Yuan/month</li>
+						  </ul>
+			  </p>
+			  <p>📚 Faculty Options <br> Applicants may apply to any faculty, unless restricted by the university. <br> ⚠️ Some institutions do not grant scholarships for the Faculty of Arts, so it is best to avoid choosing that field.</p>
+			  <p>❗This scholarship is highly competitive. <br> The outcome depends on:
+				  <ul>
+				  <li>🏛️ Decisions by the Chinese government</li>
+				  <li>🏫 The chosen university and faculty</li>
+				  <li>👤 The applicant’s profile and academic background</li>
+					  </ul>
+		      </p>
+		  </div>
+		  <a class="read-more">Read More →</a>
+		  </div>
+      </article>
+	
+      <article class="mainschol">
+		  <div id="mainschol2">
+			  <h3>Confucius Institute Scholarship (CIS)</h3>
+			  <p>The Confucius Institute Scholarship is a 100% fully funded award for international students who want to study Chinese language and culture.<br>It is available at 185 universities across China.<br><br>There are two types: 🅰️ Type A and 🅱️ Type B, both covering all expenses.
+				  <p>Recipients will receive:
+					  <ul>
+			  <li>🏫 Full tuition coverage</li>
+				  <li>🏠 Free accommodation</li>
+				  <li>🛡️ Comprehensive insurance</li>
+				  <li>💰 Monthly living expenses</li>
+			  </ul>
+				  </p>
+			  
+				  <div class="mainschol-more">
+				  <p>The expenses rates by program:
+					  <ul>
+				  <li>📖 Short-term program: 2,500 Yuan/month</li>
+				  <li>🎓 Bachelor’s → 2,500 Yuan/month</li>
+				  <li>🎓 Master’s → 3,000 Yuan/month</li>
+				  <li>🎓 Doctorate → 3,500 Yuan/month</li>
+						  </ul>
+					  </p>
+				  <p>📚 Who is it for?
+					  <ul>
+						  <li>Students interested in Chinese language, teaching, or related fields</li>
+						  <li>Applicants who want a scholarship that covers everything</li>
+		  </ul>
+					  </p>
+				  <p>❗ Important Notes
+					  <ul>
+						  <li>⚠️ Scholarship maintenance rules are very strict</li>
+						  <li>🏆 Competition is very high every year</li>
+						  <li>🏛️ Final approval comes from top-level authorities, so even if a university accepts you, it does not guarantee the scholarship</li>
+	</ul>
+					  </p>
+			  </div>
+			  </p>
+			  <a class="read-more">Read More →</a>
+		  </div>
+      </article>
+
+	  <article class="mainschol">
+		  <div id="mainschol3">
+			  <h3>Presidential Scholarship</h3>
+
+			  <p>This scholarship is offered directly by universities and can be either fully funded or partially funded, depending on the institution. <br>Each university sets its own details, so you’ll need to check on the university’s official website.</p>
+
+			  <p>📝 Application<br>Simple process: apply through the university’s website or, in some cases, by email.<br>❗The decision depends entirely on the university. If the university accepts you, then you’re in.</p>
+
+			  <div class="mainschol-more">
+				  <p>🎁 Benefits <br>Coverage varies (full or partial), depending on the university.<br><br>Requirements to maintain the scholarship are usually not strict: just keep up your grades and avoid misconduct.</p>
+
+				  <p>👤 Who is it for?</p>
+				  <ul>
+					  <li>Students who don’t want too much pressure.</li>
+					  <li>Those looking for a scholarship with lower competition (though having strong grades is still an advantage).</li>
+					  <li>Students who are flexible and easy-going.</li>
+				  </ul>
+
+				  <p>‼️Important Notes</p>
+				  <ul>
+					  <li>University scholarships often come under different names, make sure to always check whether the scholarship truly comes from the university itself.</li>
+					  <li>Processing time varies: some universities take longer to announce results, while others are quicker.</li>
+					  <li>At certain universities, competition may still be high.</li>
+				  </ul>
+
+				  <p><strong>Here are some examples of presidential scholarship</strong><br> Note: please click on the image to go to each scholarship page for more information.</p>
+
+				  <div class="carousel-container">
+					  <div class="carousel-item active">
+						  <a href="https://oec.ujs.edu.cn/en/SCHOLARSHIPS/JSU_Presidential_Scholarship.htm" target="_blank" rel="noopener noreferrer">
+							  <img src="jiangsuschol.jpg" alt="jiangsuschol">
+						  </a>
+						  <div class="carousel-info">
+							  <h4>JSU Presidential Scholarship</h4>
+							  <p>An scholarship to study at Jiangsu University (JSU) for many degrees and programs.</p>
+						  </div>
+					  </div>
+
+					  <div class="carousel-item">
+						  <a href="https://ies.chd.edu.cn/en/ChangwanUniversityPresidentScholarship/list.htm" target="_blank" rel="noopener noreferrer">
+							  <img src="changanschol.jpeg" alt="changanschol">
+						  </a>
+						  <div class="carousel-info">
+							  <h4>Chang'an University President Scholarship</h4>
+							  <p>Scholarship for international students from Chang'an University, which could study in bachelor's, master's, and doctorate degrees.</p>
+						  </div>
+					  </div>
+
+					  <div class="carousel-item">
+						  <a href="https://www.eduspur.com/apply-for-the-2025-lanzhou-university-president-scholarship-in-china-fully-funded/" target="_blank" rel="noopener noreferrer">
+							  <img src="llanzhouschol.png" alt="lanzhouschol">
+						  </a>
+						  <div class="carousel-info">
+							  <h4>Lanzhou University President Scholarship</h4>
+							  <p>The Lanzhou University President Scholarship offers a prestigious opportunity to international students willing to study for bachelors, masters, and PhD degrees in China.</p>
+						  </div>
+					  </div>
+
+					  <div class="carousel-item">
+						  <a href="http://international.zzu.edu.cn/en/scholarship/detail?cid=49&pid=5&detail=13" target="_blank" rel="noopener noreferrer">
+							  <img src="zhengzhouschol.png" alt="zhengzhouschol">
+						  </a>
+						  <div class="carousel-info">
+							  <h4>Zhengzhou University President Scholarship</h4>
+							  <p>A scholarship to study in Zhengzhou University to pursue their degree, especially doctorate degree.</p>
+						  </div>
+					  </div>
+
+					  <div class="carousel-buttons">
+						  <button id="prevBtn">Back</button>
+						  <button id="nextBtn">Next</button>
+					  </div>
+				  </div> 
+			  </div>
+			  <a class="read-more read-more-carousel">Read More →</a>
+		  </div>
+</article>
+
+		<article class="mainschol">
+			<div id="mainschol4">
+				<h3>... Municipal Government Mayor Scholarship</h3>
+				<p>This scholarship is offered by city or provincial governments. <br>Most of the time, it is given as a lump sum, for example, 25,000 Yuan per year for a Bachelor's degree. Some universities may allocate it into tuition, accommodation, and other fees. <br> The details vary depending on the university, so you need to check the university’s official website.</p>
+				
+				<p>📝 Application<br>Check the university or government-related website for application instructions. Some universities may only offer it for certain programs (Master’s or PhD).</p>
+				<div class="mainschol-more">
+					<p>🎁 Benefits <br>Usually provided as a lump sum or broken down into tuition, dormitory, and other fees. <br><br>Requirements to maintain the scholarship are simple: keep good grades and be a responsible student.</p>
+
+					<p>👤 Who is it for?</p>
+					<ul>
+						<li>Students who don’t want too much pressure.</li>
+						<li>Those looking for a scholarship with moderate competition (though having strong grades is still an advantage).</li>
+						<li>Students who are flexible and easy-going.</li>
+					</ul>
+
+					<p>‼️ Important Notes</p>
+					<ul>
+						<li>This scholarship has many different names. Always check whether it is truly provided by the city or provincial government, as it is often confused with CSS Type B scholarships.</li>
+						<li>Competition is gradually increasing every year, so having high scores is advantageous.</li>
+						<li>Processing times vary: some universities announce results faster than others.</li>
+						<li>Some universities may have higher competition for this scholarship.</li>
+					</ul>
+				</div>
+				<a class="read-more">Read More →</a>
+			</div>
+</article>
+
+		<article class="mainschol">
+			<div id="qualification">
+				 <h3>Qualifications and Documents required for Chinese Scholarships</h3>
+				<p>
+				<p>Most scholarship applicants are required to have an HSK Level 4 or above (HSK Level 5–6 is usually required for top universities). The following documents are commonly needed:</p>
+				<ul>
+					<li> Academic Transcript and Degree Certificate 📄</li>
+					<li> Statement of Purpose (SOP) 📝</li>
+					<li> Recommendation Letter 🤝</li>
+					<li> HSK Test Report or IELTS/TOFEL for international program 🎓</li>
+					<li> Admission Letter from a Chinese University (required for some types of scholarships) 📩</li>
+				</ul>
+				</p>
+			</div>
+      </article>
+
+		<article class="mainschol">
+			<div id="apply-steps">
+				<h3>Steps to Apply for a Scholarship in China For Beginners</h3>
+				<ol class="apply-list">
+					<li>Choose the university and program of interest</li>
+					<li>Check whether scholarships are available</li>
+					<li>Prepare all required documents</li>
+					<li>Apply through the CSC system or directly to the university</li>
+					<li>Wait for the admission result and proceed with the Chinese student visa application</li>
+				</ol>
+			</div>
+      </article>
+
+		<article class="mainschol">
+			<div id="tips">
+				<h3>Tips for a Successful Scholarship Application</h3>
+				<ul class="tips-list">
+					<li>Start early and plan ahead to avoid last-minute stress.</li>
+					<li>Research scholarships that fit you</li>
+					<li>Follow all instructions carefully</li>
+					<li>Proofread before submitting to minimize the errors as much as you can.</li>
+					<li>Apply to many scholarships to maximize your chance of getting the scholarship.</li>
+					<li>HSK scores should be well above the minimum requirement (recommended for HSK 5-6).</li>
+					<li>Your Statement of Purpose (SOP) must stand out and clearly reflect your goals.</li>
+					<li>If you do not have a background in Chinese language, choose programs taught in English and apply directly through the university.</li>
+				</ul>
+			</div>
+      </article>
+    </section>
+
+    <aside class="modern-nav">
+      <ul>
+        <li><a href="Scholarship.html#mainschol1" style="padding:1.2em;">China Scholarship Council (CSC)</a></li>
+        <li><a href="Scholarship.html#mainschol2" style="padding:1.2em;">Confucius Institute Scholarship (CIS)</a></li>
+        <li><a href="Scholarship.html#mainschol3" style="padding:1.2em;">Presidential Scholarship</a></li>
+        <li><a href="Scholarship.html#mainschol4" style="padding:1.2em;">Municipal Government Mayor Scholarship</a></li>
+        <li><a href="Scholarship.html#qualification" style="padding:1.2em;">Qualifications and Documents Required</a></li>
+		<li><a href="Scholarship.html#apply-steps" style="padding:1.2em;">Steps to Apply for a Scholarship</a></li>
+		<li><a href="Scholarship.html#tips" style="padding:1.2em;">Tips for Application</a></li>
+      </ul>
+    </aside>
+  </main>
+	
+  <footer style="background-color:#9A0909; grid-area: footer; color: white; padding: 20px; text-align: center; border-radius: 18px; box-shadow: 0 2px 8px rgba(0,0,0,0.4); font-size: 1em;">
+    <p>© China Scholarship Information and Chinese Language Learning Resources</p>
+  </footer>
+	
+	  <script>
+
+    const dropdowns = document.querySelectorAll('.dropdown');
+
+    dropdowns.forEach(dd => {
+      const btn = dd.querySelector('button');
+      btn.addEventListener('click', evt => {
+        evt.stopPropagation();
+		  
+        dropdowns.forEach(other => {
+          if (other !== dd) other.classList.remove('is-open');
+        });
+		  
+        dd.classList.toggle('is-open');
+      });
+    });
+
+    document.addEventListener('click', () => {
+      dropdowns.forEach(dd => dd.classList.remove('is-open'));
+    });
+  </script>
+	
+	<script>
+const hamburgerBtn = document.getElementById('hamburger');
+const mobileNav = document.getElementById('mobileNav');
+const overlay = document.getElementById('mobileOverlay');
+
+function openNav() {
+  mobileNav.classList.add('open');
+  overlay.classList.add('show');
+  hamburgerBtn.setAttribute('aria-expanded','true');
+  mobileNav.setAttribute('aria-hidden','false');
+  overlay.setAttribute('aria-hidden','false');
+}
+function closeNav() {
+  mobileNav.classList.remove('open');
+  overlay.classList.remove('show');
+  hamburgerBtn.setAttribute('aria-expanded','false');
+  mobileNav.setAttribute('aria-hidden','true');
+  overlay.setAttribute('aria-hidden','true');
+}
+
+hamburgerBtn.addEventListener('click', () => {
+  mobileNav.classList.contains('open') ? closeNav() : openNav();
+});
+
+overlay.addEventListener('click', () => {
+  closeNav();
+  document.querySelectorAll('.mobile-nav .dropdown.open').forEach(li => li.classList.remove('open'));
+});
+
+document.querySelectorAll('.mobile-nav .dropdown .natv-btn').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    const li = btn.parentElement;
+    li.classList.toggle('open');
+    const expanded = li.classList.contains('open');
+    btn.setAttribute('aria-expanded', String(expanded));
+  });
+});
+</script>
+	
+	<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const readMoreLinks = document.querySelectorAll('.read-more');
+
+  readMoreLinks.forEach(link => {
+    link.addEventListener('click', function (event) {
+      event.preventDefault();
+      const post = this.closest('.mainschol'); 
+      const moreContent = post.querySelector('.mainschol-more');
+
+      if (!moreContent) return; 
+		
+      moreContent.classList.toggle('expanded');
+
+      if (moreContent.classList.contains('expanded')) {
+        this.textContent = 'Read Less ←';
+      } else {
+        this.textContent = 'Read More →';
+      }
+    });
+  });
+});
+</script>
+	
+	<script>
+  const modal = document.getElementById("loginModal");
+  const desktopLogin = document.getElementById("desktopLogin");
+  const mobileLogin = document.getElementById("mobileLogin");
+  const closeBtn = document.querySelector(".modal .close");
+  const cancelBtn = document.querySelector(".modal .cancel-btn");
+
+  function openModal() { modal.style.display = "block"; }
+  function closeModal() { modal.style.display = "none"; }
+
+  if (desktopLogin) desktopLogin.addEventListener("click", openModal);
+  if (mobileLogin) mobileLogin.addEventListener("click", openModal);
+  closeBtn.addEventListener("click", closeModal);
+  cancelBtn.addEventListener("click", closeModal);
+
+  window.addEventListener("click", (e) => {
+    if (e.target === modal) closeModal();
+  });
+</script>
+	
+<script>
+  const items = document.querySelectorAll('.carousel-item');
+  let currentIndex = 0;
+
+  const showItem = (index) => {
+    items.forEach((item, i) => {
+      item.classList.toggle('active', i === index);
+    });
+  };
+
+  document.getElementById('nextBtn').addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % items.length;
+    showItem(currentIndex);
+  });
+
+  document.getElementById('prevBtn').addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + items.length) % items.length;
+    showItem(currentIndex);
+  });
+</script>
+
+</body>
+</html>

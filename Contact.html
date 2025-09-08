@@ -1,0 +1,657 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>China Scholarship</title>
+  <style>
+    html, body { 
+		box-sizing: border-box; 
+		margin: 0; 
+		padding: 0.3em; 
+	  }
+    body {
+		font-family:publico;
+		background-color:#FFFBEB;
+		overflow-x: hidden;
+	  }
+
+    .banner {
+		background: linear-gradient(to bottom, #990000, #ea3b52);
+		color: white;
+		padding: 1.5em;
+		text-align: center;
+		border-radius: 25px;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+	  }
+    .banner h1 {
+		font-size: 2.35em;
+		font-family:pt-serif;
+		color: white;
+		text-shadow:
+        -1px -1px 0 black,
+         1px -1px 0 black,
+        -1px  1px 0 black,
+         1px  1px 0 black;
+		margin-bottom: 0.2em;
+	  }
+
+	  .banner h3 {
+		  margin-top: 0;
+		  font-size: 1.35em;
+		  color:white;
+	  }
+	  
+	  .banner a {
+		  display: inline-block;           
+		  padding: 0.4em 0.9em;            
+		  border-radius: 5px;       
+		  transition: background 0.3s, box-shadow 0.3s;
+		  text-decoration: none;
+	  }
+	  .banner a:hover {
+		  background: rgba(195, 195, 195, 0.27);  
+		  cursor: pointer;                   
+	  }
+
+	nav { 
+		background: #fddb53;
+		border-radius: 15px;
+		box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+		position: sticky;
+        top: 0;
+        z-index: 1000;
+	  }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+	  gap:80px;
+	  font-size:1.15em;
+    }
+    nav ul li {
+      position: relative;
+      margin: 0 0.5em;
+    }
+	  
+   nav ul li > a,
+   nav ul li .natv-btn {
+      color: white;
+      background: none;
+      border: none;
+      padding: 1.16em;
+      font-size: 1em;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      transition: background-color 0.25s ease-out, color 0.25s ease-out;
+   }
+
+   nav ul li > a:hover,
+   nav ul li > a:focus,
+   nav ul li > a:active,
+   nav ul li .natv-btn:hover,
+   nav ul li .natv-btn:focus,
+   nav ul li .natv-btn:active {
+      background-color: #EBB105;
+      color: #ffffff;
+   }
+ 
+    .natv-btn,
+    nav ul li > a {
+      color: white;
+      background: none;
+      border: none;
+      padding: 1em;
+      text-decoration: none;
+      font-size: 1em;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .natv-btn .arrow {
+		color:black;
+      display: inline-block;
+      margin-left: 0.3em;
+      font-size: 0.65em;
+      transition: transform 0.3s ease;
+    }
+    
+	 .nav-text{font-family:publico; font-size:1.1em; color:black;}
+	  
+    .submenu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: white;
+      color: #775F00;
+      border: 1px solid #ccc;
+      min-width: 8em;
+      display: none;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+    .submenu a {
+      display: block;
+      padding: 0.75em 1em;
+      text-decoration: none;
+      color: inherit;
+    }
+    .submenu a:hover {
+      background: #efefef;
+    }
+
+    .dropdown.is-open .submenu {
+      display: block;
+    }
+    .dropdown.is-open .arrow {
+      transform: rotate(180deg);
+    }
+	  
+.mobile-header {
+  display: none;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 2001;
+}
+.hamburger {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.9rem;
+  cursor: pointer;
+  padding: 6px;
+}
+
+.mobile-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  z-index: 1999;
+  opacity: 0;
+  transition: opacity .25s ease;
+}
+.mobile-overlay.show { display:block; opacity:1; }
+
+.mobile-nav {
+  position: fixed;
+  top: 0;
+  right: -280px;
+  width: 280px;
+  height: 100%;
+  background: #C7A622;     
+  box-shadow: -4px 0 12px rgba(0,0,0,.4);
+  transition: right .32s ease;
+  z-index: 2000;
+  padding-top: 60px;      
+  overflow-y: auto;
+}
+
+.mobile-nav.open { right: 0; }
+
+.mobile-nav ul        { 
+	display: block !important;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	  }
+	  
+.mobile-nav li { 
+	display: block !important;
+	border-bottom: 1px solid rgba(255,255,255,0.12);
+	  }
+	  
+.mobile-nav a,
+.mobile-nav .natv-btn { 
+	display: block !important; 
+	width: 100%;
+	text-align: left;
+	padding: 14px 16px;
+	color: #fff; 
+	text-decoration: none;
+	background: none;
+	border: 0; 
+	cursor: pointer; 
+	font-family: publico; 
+	font-size: 1rem;
+	  }
+	  
+.mobile-nav a:hover,
+.mobile-nav .natv-btn:hover {
+	background: rgba(0,0,0,0.08);
+	  }
+	  
+	  @media (max-width: 991px) {
+  .mobile-header { 
+	  display: block; 
+		  }
+		  
+  nav:not(.mobile-nav) {
+	  display: none !important;
+		  } 
+}
+@media (min-width: 992px) {
+  .mobile-header, .mobile-nav, .mobile-overlay { 
+	  display: none !important; 
+	}
+}
+	  
+	main { 
+		 background-color:transparent;
+		  padding: 4px 4px 23px 4px;
+		  flex-direction: column;
+		  display: flex;
+		gap:30px;
+	  }
+	  
+	section{ background-color: #FFFFFF;
+	   border: 1px solid #ddd;
+	   padding: 20px;
+	   flex: 3; 
+	   border-radius:23px ;
+       box-shadow:0 2px 10px rgba(0,0,0,0.08);
+	}
+	  
+	input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc; 
+  border-radius: 10px; 
+  box-sizing: border-box; 
+  margin-top: 6px; 
+  margin-bottom: 16px; 
+  resize: vertical
+	  }
+
+input[type=submit] {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #05905D;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+	  
+	  .login-icon {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 3000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+}
+.modal-content {
+  background: white;
+  margin: 8% auto;
+  padding: 25px;
+  width: 320px;
+  border-radius: 10px;
+  text-align: center;
+  position: relative;
+}
+.modal-content img {
+  width: 100px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+.modal-content input {
+  width: 88%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.modal-content button {
+  width: 95%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 8px;
+  cursor: pointer;
+}
+	  
+.login-btn { 
+	background: #7dc27d;
+	color: white; 
+	  }
+.cancel-btn { 
+	background: #f36c60; 
+	color: white;
+	  }
+
+.modal .close {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+	  .mobile-auth{
+		  margin-top: 3em;
+	  }
+	  
+@media (max-width: 991px) {
+  .login-icon { display: none; }
+  .mobile-auth { display: block !important; }
+}
+@media (min-width: 992px) {
+  .mobile-auth { display: none !important; }
+}
+	  
+	  @media (max-width: 767px) {
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  .banner {
+    padding: 1em;
+    border-radius: 15px;
+  }
+
+  .banner h1 {
+    font-size: 1.6em;
+  }
+
+  main {
+    display: block;
+    padding: 0 10px;
+    margin: 0;
+  }
+
+  section {
+    width: auto !important;
+    margin-bottom: 20px;
+    padding: 15px !important;
+    box-sizing: border-box;
+  }
+
+  .contact img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 10px auto;
+  }
+
+  input[type="text"], textarea {
+    width: 100% !important;
+    font-size: 1em;
+  }
+
+  input[type="submit"] {
+    width: 100% !important;
+  }
+
+  footer {
+    padding: 15px;
+    font-size: 0.9em;
+    text-align: center;
+  }
+
+  nav:not(.mobile-nav) {
+    display: none !important;
+  }
+
+  .mobile-header {
+    display: block !important;
+  }
+}
+	  
+	  @media (max-width: 767px) {
+  body {
+    padding: 0;
+    margin: 0;
+    background-color: #E8E8CA;
+  }
+
+  main {
+    padding: 20px 12px 12px 12px;
+  }
+
+  section {
+    margin: 0 0 20px 0;
+    padding: 18px 16px !important;
+    border-radius: 12px;
+    box-sizing: border-box;
+  }
+
+  .banner {
+    margin: 0 12px 16px;
+  }
+
+  .contact img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto 0 auto;
+  }
+}
+  </style>
+</head>
+	
+<body>
+
+    <div class="banner">
+    <a href="Main.html">
+		<h1>Mandarin Minds</h1>
+		<h3>Resources and scholarships for curious minds!</h3>
+	  </a>
+		 <img src="avatar.png" alt="Login" class="login-icon" id="desktopLogin">
+  </div>
+
+	<div class="mobile-header">
+  <button class="hamburger" id="hamburger" aria-expanded="false" aria-controls="mobileNav">&#9776;</button>
+</div>
+<div class="mobile-overlay" id="mobileOverlay" aria-hidden="true"></div>
+<nav class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <ul>
+    <li>
+	  <a href="Home.html">Home</a>
+	  <a href="Scholarship.html">Scholarship</a>
+	  <a href="Courses.html">Courses</a>
+      <a href="Contact.html">Contact</a>
+    </li>
+	   <li class="mobile-auth">
+		  <a href="#" id="mobileLogin">Login</a>
+		  <a href="#">Logout</a>
+	  </li>
+  </ul>
+</nav>
+	
+  <nav>
+    <ul>
+        <li class="dropdown">
+        <button class="natv-btn">
+			<span class="nav-text">Home</span> <span class="arrow">▼</span>
+        </button>
+        <div class="submenu">
+          <a href="Home.html#intro">Introduction to Our Website</a>
+		  <a href="Home.html#faqs">FAQs about us</a>
+		  <a href="Home.html#uni">China Universities</a>
+        </div>
+      </li>
+
+      <li class="dropdown">
+        <button class="natv-btn">
+        <span class="nav-text">Scholarship</span> <span class="arrow">▼</span>
+        </button>
+        <div class="submenu">
+          <a href="Scholarship.html">Scholarship List</a>
+        </div>
+      </li>
+
+      <li class="dropdown">
+        <button class="natv-btn">
+         <span class="nav-text">Courses</span> <span class="arrow">▼</span>
+        </button>
+        <div class="submenu">
+          <a href="Courses.html#courses">Courses</a>
+		  <a href="Courses.html#app">Applications</a>
+		  <a href="Courses.html#yt">Youtube Channels</a>
+          <a href="Courses.html#books">Books</a>
+        </div>
+      </li>
+
+      <li style="font-size:1.15em;">
+		  <a href="Contact.html" style="color: black;">Contact</a></li>
+    </ul>
+  </nav>
+
+	<div id="loginModal" class="modal">
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<img src="avatar.png" alt="User">
+			<h2>Login</h2>
+			<input type="text" placeholder="Username">
+			<input type="password" placeholder="Password">
+			<button class="login-btn">Login</button>
+			<button class="cancel-btn">Cancel</button>
+		</div>
+	</div>
+	
+ <main>
+	<section class="contact">
+	 <h2 style="margin-top: 0; border-bottom: 3px solid #B11218; padding-bottom: 12px; margin-bottom: 20px; font-size:1.9em;">You can contact us via :</h2>
+		<p style="font-size: 1.17em"><strong>Email:</strong> ChinaSchol@gmail.com<br><br><strong>Instagram: </strong>China_Schol1<br><br><strong>Twitter:</strong> China_Schol1<br><br><strong>Line official:</strong> @ChinaSchol1234<br><br><strong>Line open chat:</strong> scan the QR code below!</p>
+		<img src="qr127.png" alt="Qr Code" width="150" height="150">
+	</section>
+	<section class="contact-form">
+	 <h2 style="margin-top: 0; border-bottom: 3px solid #B11218; padding-bottom: 12px; margin-bottom: 20px; font-size:1.9em;">You can also send a message to us through this form</h2>
+		<p style="color:#444444">Note: We usually respond within 1-2 business days.</p>
+		<div class="container">
+         <form action="action_page.php">
+
+        <label for="fname">First Name</label>
+        <input type="text" id="fname" name="firstname" placeholder="Your name">
+
+       <label for="lname">Last Name</label>
+       <input type="text" id="lname" name="lastname" placeholder="Your last name">
+
+       <label for="phone">Phone Number</label>
+       <input type="text" id="phone" name="phonenumber" placeholder="Your phone number">
+
+       <label for="subject">Message</label>
+       <textarea id="subject" name="subject" placeholder="Write something..." style="height:150px"></textarea>
+			 
+       <input type="submit" value="Submit" style="background-color: #CE454A">
+		
+        </form>
+       </div>
+	</section>
+	<section class="business-hour">
+	 <h2 style="margin-top: 0; border-bottom: 3px solid #B11218; padding-bottom: 12px; margin-bottom: 20px; font-size:1.9em;">Our business hour :</h2>
+		<p style="font-size: 1.17em">Mon-Fri : 10:00-17:00 <br> Sat-Sun : 10:30-16:30 <br><br> p.s. We don't work only on New Year's Day (December, 30th - January, 2nd). If you send a message in those days, we will reply on January, 3rd - January, 4th.</p>
+	</section>
+ </main>
+	
+  <footer style="background-color:#9A0909; grid-area: footer; color: white; padding: 20px; text-align: center; border-radius: 18px; box-shadow: 0 2px 8px rgba(0,0,0,0.4); font-size: 1em;">
+    <p>© China Scholarship Information and Chinese Language Learning Resources</p>
+  </footer>
+	
+	 <script>
+
+    const dropdowns = document.querySelectorAll('.dropdown');
+
+    dropdowns.forEach(dd => {
+      const btn = dd.querySelector('button');
+      btn.addEventListener('click', evt => {
+        evt.stopPropagation();
+		  
+        dropdowns.forEach(other => {
+          if (other !== dd) other.classList.remove('is-open');
+        });
+		  
+        dd.classList.toggle('is-open');
+      });
+    });
+
+    document.addEventListener('click', () => {
+      dropdowns.forEach(dd => dd.classList.remove('is-open'));
+    });
+  </script>
+	
+		<script>
+const hamburgerBtn = document.getElementById('hamburger');
+const mobileNav = document.getElementById('mobileNav');
+const overlay = document.getElementById('mobileOverlay');
+
+function openNav() {
+  mobileNav.classList.add('open');
+  overlay.classList.add('show');
+  hamburgerBtn.setAttribute('aria-expanded','true');
+  mobileNav.setAttribute('aria-hidden','false');
+  overlay.setAttribute('aria-hidden','false');
+}
+function closeNav() {
+  mobileNav.classList.remove('open');
+  overlay.classList.remove('show');
+  hamburgerBtn.setAttribute('aria-expanded','false');
+  mobileNav.setAttribute('aria-hidden','true');
+  overlay.setAttribute('aria-hidden','true');
+}
+
+hamburgerBtn.addEventListener('click', () => {
+  mobileNav.classList.contains('open') ? closeNav() : openNav();
+});
+
+overlay.addEventListener('click', () => {
+  closeNav();
+  document.querySelectorAll('.mobile-nav .dropdown.open').forEach(li => li.classList.remove('open'));
+});
+
+document.querySelectorAll('.mobile-nav .dropdown .natv-btn').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    const li = btn.parentElement;
+    li.classList.toggle('open');
+    const expanded = li.classList.contains('open');
+    btn.setAttribute('aria-expanded', String(expanded));
+  });
+});
+</script>
+	
+	<script>
+  const modal = document.getElementById("loginModal");
+  const desktopLogin = document.getElementById("desktopLogin");
+  const mobileLogin = document.getElementById("mobileLogin");
+  const closeBtn = document.querySelector(".modal .close");
+  const cancelBtn = document.querySelector(".modal .cancel-btn");
+
+  function openModal() { modal.style.display = "block"; }
+  function closeModal() { modal.style.display = "none"; }
+
+  if (desktopLogin) desktopLogin.addEventListener("click", openModal);
+  if (mobileLogin) mobileLogin.addEventListener("click", openModal);
+  closeBtn.addEventListener("click", closeModal);
+  cancelBtn.addEventListener("click", closeModal);
+
+  window.addEventListener("click", (e) => {
+    if (e.target === modal) closeModal();
+  });
+</script>
+	
+</body>
+</html>

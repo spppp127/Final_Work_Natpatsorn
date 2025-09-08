@@ -1,0 +1,735 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>China Scholarship</title>
+  <style>
+   html, body  { 
+	   box-sizing: border-box; 
+	   margin: 0; 
+	   padding: 0.3em;
+	  }
+	  
+    body {
+		font-family:publico;
+		background-color:#FFFBEB;
+		overflow-x: hidden;
+		 position: relative; 
+	  }
+
+	  body::before {
+		  content: "";
+		  position: absolute;
+		  top: 0;
+		  left: 0;
+		  width: 100%;
+		  height: 100%;
+		  background-image: url('unibg2.jpg');
+		  background-size: cover;
+		  background-position: center;
+		  opacity: 0.5; 
+		  z-index: -1;
+	  }
+	  
+	  .banner-slider {
+  position: relative;
+  width: 100%;
+  height: 21.8em; 
+  overflow: hidden; 
+  border-radius: 25px;
+		  border: solid 1px white;
+		  aspect-ratio: 16/9;
+}
+
+.banner-slider .slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+	 display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  inset: 0;
+}
+
+	  .banner-slider .slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  object-position: center; 
+  border-radius: 25px 25px 0 0;
+}
+	  
+.banner-slider .slide.active {
+  opacity: 1;
+	display: flex;
+  min-height: 200px;
+}
+
+.banner-slider .nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.7);
+  border: none;
+  padding: 0.5em 0.8em;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+	  .banner-slider .slide img {
+    width: 100%;
+    height: auto;
+    border-radius: 25px 25px 0 0;
+}
+	  
+.banner-slider .prev {
+  left: 10px;
+}
+
+.banner-slider .next {
+  right: 10px;
+}
+	  
+	  .banner-slider .slide.active {
+  opacity: 1;
+  display: flex;              
+  flex-direction: column;   
+  justify-content: center;   
+  align-items: center;       
+  text-align: center;      
+}
+
+	  .slide1 {
+		  font-size: 2.35em;
+		font-family:pt-serif;
+		color: white;
+		text-shadow:
+        -1px -1px 0 black,
+         1px -1px 0 black,
+        -1px  1px 0 black,
+         1px  1px 0 black;
+	  }
+	  
+	nav { 
+		background: #fddb53;
+		border-radius: 15px;
+		box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+		position: sticky;
+        top: 0;
+        z-index: 1000;
+	  }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+	  gap:80px;
+	  font-size:1.15em;
+	  margin: 0;
+  padding: 0;
+    }
+    nav ul li {
+      position: relative;
+      margin: 0 0.5em;
+    }
+	  
+   nav ul li > a,
+   nav ul li .natv-btn {
+      color: white;
+      background: none;
+      border: none;
+      padding: 1.16em;
+      font-size: 1em;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      transition: background-color 0.25s ease-out, color 0.25s ease-out;
+   }
+
+   nav ul li > a:hover,
+   nav ul li > a:focus,
+   nav ul li > a:active,
+   nav ul li .natv-btn:hover,
+   nav ul li .natv-btn:focus,
+   nav ul li .natv-btn:active {
+      background-color: #EBB105;
+      color: #ffffff;
+   }
+ 
+    .natv-btn,
+    nav ul li > a {
+      color: white;
+      background: none;
+      border: none;
+      padding: 1em;
+      text-decoration: none;
+      font-size: 1em;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .natv-btn .arrow {
+		color:black;
+      display: inline-block;
+      margin-left: 0.3em;
+      font-size: 0.65em;
+      transition: transform 0.3s ease;
+    }
+    
+	 .nav-text{
+		 font-family:publico; 
+		 font-size:1.1em; color:black;
+	  }
+	  
+    .submenu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: white;
+      color: #775F00;
+      border: 1px solid #ccc;
+      min-width: 8em;
+      display: none;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+    .submenu a {
+      display: block;
+      padding: 0.75em 1em;
+      text-decoration: none;
+      color: inherit;
+    }
+    .submenu a:hover {
+      background: #efefef;
+    }
+
+    .dropdown.is-open .submenu {
+      display: block;
+    }
+    .dropdown.is-open .arrow {
+      transform: rotate(180deg);
+    }
+	  
+.mobile-header {
+  display: none;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 2001;
+}
+.hamburger {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.9rem;
+  cursor: pointer;
+  padding: 6px;
+}
+
+.mobile-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  z-index: 1999;
+  opacity: 0;
+  transition: opacity .25s ease;
+}
+.mobile-overlay.show { display:block; opacity:1; }
+
+.mobile-nav {
+  position: fixed;
+  top: 0;
+  right: -280px;
+  width: 280px;
+  height: 100%;
+  background: #C7A622;     
+  box-shadow: -4px 0 12px rgba(0,0,0,.4);
+  transition: right .32s ease;
+  z-index: 2000;
+  padding-top: 60px;      
+  overflow-y: auto;
+}
+
+.mobile-nav.open { right: 0; }
+
+.mobile-nav ul        { 
+	display: block !important; 
+	margin: 0;
+	padding: 0; 
+	list-style: none; 
+	  }
+	  
+.mobile-nav li {
+	display: block !important;
+	border-bottom: 1px solid rgba(255,255,255,0.12);
+	  }
+	  
+.mobile-nav a,
+.mobile-nav .natv-btn { 
+	display: block !important;
+	width: 100%; 
+	text-align: left; 
+	padding: 14px 16px;
+	color: #fff;
+	text-decoration: none;
+	background: none;
+	border: 0; 
+	cursor: pointer;
+	font-family: publico; 
+	font-size: 1rem;
+	  }
+	  
+.mobile-nav a:hover,
+.mobile-nav .natv-btn:hover { 
+	background: rgba(0,0,0,0.08);
+	  }
+	  
+	  @media (max-width: 991px) {
+  .mobile-header { 
+	  display: block;
+		  }
+  nav:not(.mobile-nav) { 
+	  display: none !important;
+		  } 
+}
+@media (min-width: 992px) {
+  .mobile-header, .mobile-nav, .mobile-overlay {
+	  display: none !important;
+	}
+}
+	  
+	  .main {
+		  padding-bottom: 18px;
+	  }
+	  
+	  .mainsec {
+		background-color: transparent;
+		scroll-margin-top: 100px;
+		  padding: 13em 24em;
+	  }
+	  
+	  
+	  .cta { 
+		  grid-area: cta; 
+		  display: flex; 
+		  flex-direction: column;
+		  align-items: center; 
+		  justify-content: center; 
+		  background: rgba(205, 92, 92, 1); 
+		  color: #fff; 
+		  border-radius: 12px; 
+		  padding: 2em 1em;
+	  }
+	  
+	  .cta h1 {
+    font-size: clamp(1.2em, 3vw, 2em);
+}
+	  
+	  .cta h4 {
+		  font-size:1.11em;
+	  }
+	  
+      .cta button { 
+		  font-family: publico;
+		  background: #fff; 
+		  color: #7B3737; 
+		  border: none; 
+		  border-radius: 6px;
+		  padding: 12px 32px; 
+		  font-size: 1.2em; 
+		  font-weight: 700; 
+		  cursor: pointer; 
+		  margin-top: 18px;
+		  transition: background 0.2s, color 0.2s;
+		  font-size: clamp(1em, 2.5vw, 1.2em);
+	  }
+      .cta button:hover { 
+		  background: #e9ecef; 
+		  color: #EBA4A4; 
+	  }
+	  
+	.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5); 
+  font-family: Arial, sans-serif;
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 80px auto;
+  padding: 20px 49px 20px 30px;
+  width: 90%;
+  max-width: 400px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  position: relative;
+    margin: 5% auto;
+}
+
+.modal-content > h1 {
+  margin: 0;
+  font-size: 1.8em;
+}
+
+.modal-content hr {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 12px 0 20px;
+}
+
+.modal-content label {
+  font-weight: 600;
+  display: block;
+  margin: 12px 0 6px;
+}
+.modal-content input[type="email"],
+.modal-content input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f5f5f5;
+}
+
+.modal-content input[type="checkbox"] {
+  margin-right: 6px;
+}
+
+.modal-content p {
+  margin: 16px 0;
+  font-size: 0.95em;
+}
+
+.modal-content .clearfix {
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+.modal-content .clearfix button {
+  width: 48%;
+  padding: 12px 0;
+  border: none;
+  color: #fff;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 8px; 
+}
+
+.modal-content .cancelbtn {
+  float: left;
+  background-color: #f36c60;
+}
+
+.modal-content .signupbtn {
+  float: right;
+  background-color: #7dc27d;
+}
+	  
+	  @media (max-width: 1200px) {
+    .mainsec {
+        padding: 2em 3em;
+    }
+}
+
+@media (max-width: 992px) {
+    .mainsec {
+        padding: 2em 2em;
+    }
+}
+
+@media (max-width: 768px) {
+    .banner-slider {
+        height: 15em;
+    }
+    .banner-slider .slide h1 { 
+		font-size: 1.8em;
+	}
+    .banner-slider .slide h3 {
+		font-size: 1.1em; 
+	}
+    nav ul { 
+		flex-direction: column;
+		gap: 0;
+	}
+}
+
+@media (max-width: 480px) {
+    .mainsec {
+        padding: 1em;
+    }
+	
+    .banner-slider .slide h1 { 
+		font-size: 1.5em; 
+	}
+    .banner-slider .slide h3 {
+		font-size: 1em; 
+	}
+    .cta h1 { 
+		font-size: 1.5em;
+	}
+    .cta button {
+		font-size: 1em; 
+		padding: 10px 24px;
+	}
+    nav ul li {
+		font-size: 0.9em;
+	}
+}
+	</style>
+</head>
+
+<body>
+	
+	 <div class="banner-slider">
+		 <div class="slide active" style="background: linear-gradient(to bottom, #990000, #ea3b52);">
+			 <h1 class="slide1">Mandarin Minds</h1>
+			 <h3 style="font-size: 1.35em; color:white;">Resources and scholarships for curious minds!</h3>
+		 </div>
+		 <div class="slide">
+			 <img src="thegatee.jpg" alt="uni gate">
+		 </div>
+		 <div class="slide">
+			 <img src="thegreatwall.jpg" alt="greatwall">
+		 </div>
+		 <div class="slide">
+			 <img src="citysh.jpg" alt="shanghai">
+		 </div>
+		 
+  <button class="nav prev">&lt;</button>
+  <button class="nav next">&gt;</button>
+</div>
+	
+<!-- Mobile nav -->
+	<div class="mobile-header">
+  <button class="hamburger" id="hamburger" aria-expanded="false" aria-controls="mobileNav">&#9776;</button>
+</div>
+<div class="mobile-overlay" id="mobileOverlay" aria-hidden="true"></div>
+<nav class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <ul>
+    <li>
+	  <a href="Home.html">Home</a>
+	  <a href="Scholarship.html">Scholarship</a>
+	  <a href="Courses.html">Courses</a>
+      <a href="Contact.html">Contact</a>
+    </li>
+  </ul>
+</nav>
+	
+  <nav>
+    <ul>
+        <li class="dropdown">
+        <button class="natv-btn">
+			<span class="nav-text">Home</span> <span class="arrow">▼</span>
+        </button>
+        <div class="submenu">
+          <a href="Home.html#intro">Introduction to Our Website</a>
+		  <a href="Home.html#faqs">FAQs about us</a>
+		  <a href="Home.html#uni">China Universities</a>
+        </div>
+      </li>
+
+      <li class="dropdown">
+        <button class="natv-btn">
+        <span class="nav-text">Scholarship</span> <span class="arrow">▼</span>
+        </button>
+        <div class="submenu">
+          <a href="Scholarship.html">Scholarship List</a>
+        </div>
+      </li>
+
+      <li class="dropdown">
+        <button class="natv-btn">
+         <span class="nav-text">Courses</span> <span class="arrow">▼</span>
+        </button>
+        <div class="submenu">
+          <a href="Courses.html#courses">Courses</a>
+		  <a href="Courses.html#app">Applications</a>
+		  <a href="Courses.html#yt">Youtube Channels</a>
+          <a href="Courses.html#books">Books</a>
+        </div>
+      </li>
+
+      <li style="font-size:1.15em;">
+		  <a href="Contact.html" style="color: black;">Contact</a>
+		</li>
+    </ul>
+  </nav>
+	
+	<main class="main">
+		<section class="mainsec">
+			<div class="cta">
+		        <h1>Start explore our website now!</h1>
+				<button id="ctaBtn">CLICK</button>
+				<h4>Want to get the latest information? 
+					<span id="signupTrigger" style="cursor: pointer; color: #C1EDFF; text-decoration: underline;">
+						Sign Up!
+					</span>
+				</h4>
+			</div>
+			
+			<div id="signupModal" class="modal">
+				<div class="modal-content">
+					<span class="close" title="Close">&times;</span>
+					<form action="action_page.php">
+						<div class="container">
+							<h1>Sign Up</h1>
+							<p>Please fill in this form to create an account.</p>
+							<hr>
+							<label for="email"><b>Email</b></label>
+							<input type="email" placeholder="Enter Email" name="email" required>
+							<label for="psw"><b>Password</b></label>
+							<input type="password" placeholder="Enter Password" name="psw" required>
+							<label for="psw-repeat"><b>Repeat Password</b></label>
+							<input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+							<label>
+							<input type="checkbox" name="remember" checked> Remember me
+							</label>
+							<p>If you already have an account, click here to
+								<a href="#" style="color:dodgerblue"> Log In</a>.
+							</p>
+							<div class="clearfix">
+								<button type="button" class="cancelbtn">Cancel</button>
+								<button type="submit" class="signupbtn">Sign Up</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</section>
+	</main>
+	
+	<footer style="background-color:#9A0909; grid-area: footer; color: white; padding: 20px; text-align: center; border-radius: 18px; box-shadow: 0 2px 8px rgba(0,0,0,0.4); font-size: 1em;">
+    <p>© China Scholarship Information and Chinese Language Learning Resources</p>
+  </footer>
+	
+	<script>
+
+    const dropdowns = document.querySelectorAll('.dropdown');
+
+    dropdowns.forEach(dd => {
+      const btn = dd.querySelector('button');
+      btn.addEventListener('click', evt => {
+        evt.stopPropagation();
+		  
+        dropdowns.forEach(other => {
+          if (other !== dd) other.classList.remove('is-open');
+        });
+		  
+        dd.classList.toggle('is-open');
+      });
+    });
+
+    document.addEventListener('click', () => {
+      dropdowns.forEach(dd => dd.classList.remove('is-open'));
+    });
+  </script>
+	
+	<script>
+const hamburgerBtn = document.getElementById('hamburger');
+const mobileNav = document.getElementById('mobileNav');
+const overlay = document.getElementById('mobileOverlay');
+
+function openNav() {
+  mobileNav.classList.add('open');
+  overlay.classList.add('show');
+  hamburgerBtn.setAttribute('aria-expanded','true');
+  mobileNav.setAttribute('aria-hidden','false');
+  overlay.setAttribute('aria-hidden','false');
+}
+function closeNav() {
+  mobileNav.classList.remove('open');
+  overlay.classList.remove('show');
+  hamburgerBtn.setAttribute('aria-expanded','false');
+  mobileNav.setAttribute('aria-hidden','true');
+  overlay.setAttribute('aria-hidden','true');
+}
+
+hamburgerBtn.addEventListener('click', () => {
+  mobileNav.classList.contains('open') ? closeNav() : openNav();
+});
+
+overlay.addEventListener('click', () => {
+  closeNav();
+  document.querySelectorAll('.mobile-nav .dropdown.open').forEach(li => li.classList.remove('open'));
+});
+
+document.querySelectorAll('.mobile-nav .dropdown .natv-btn').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    const li = btn.parentElement;
+    li.classList.toggle('open');
+    const expanded = li.classList.contains('open');
+    btn.setAttribute('aria-expanded', String(expanded));
+  });
+});
+</script>
+	
+	<script>
+  document.getElementById("ctaBtn").onclick = function() {
+    window.location.href = "Home.html"; 
+  };
+</script>
+
+	<script>
+  const trigger = document.getElementById('signupTrigger');
+  const modal = document.getElementById('signupModal');
+  const closeBtn = modal.querySelector('.close');
+  const cancelBtn = modal.querySelector('.cancelbtn');
+
+  trigger.onclick = () => { modal.style.display = 'block'; };
+  closeBtn.onclick = () => { modal.style.display = 'none'; };
+  cancelBtn.onclick = () => { modal.style.display = 'none'; };
+  window.onclick = (e) => { if (e.target === modal) modal.style.display = 'none'; };
+</script>
+	
+	<script>
+  const slides = document.querySelectorAll('.banner-slider .slide');
+  const prevBtn = document.querySelector('.banner-slider .prev');
+  const nextBtn = document.querySelector('.banner-slider .next');
+  let current = 0;
+  let slideInterval = setInterval(nextSlide, 4700);
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('active', i === index);
+    });
+    current = index;
+  }
+
+  function nextSlide() {
+    showSlide((current + 1) % slides.length);
+  }
+
+  function prevSlide() {
+    showSlide((current - 1 + slides.length) % slides.length);
+  }
+
+  nextBtn.addEventListener('click', () => {
+    nextSlide();
+    resetInterval();
+  });
+
+  prevBtn.addEventListener('click', () => {
+    prevSlide();
+    resetInterval();
+  });
+
+  function resetInterval() {
+    clearInterval(slideInterval);
+    slideInterval = setInterval(nextSlide, 4700);
+  }
+</script>
+	
+</body>
+</html>

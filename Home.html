@@ -1,0 +1,927 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>China Scholarship</title>
+  <style>
+   html, body  { 
+	   box-sizing: border-box; 
+	   margin: 0; 
+	   padding: 0.3em;
+	  }
+	  
+    body {
+		font-family:publico;
+		background-color:#FFFBEB;
+		overflow-x: hidden;
+	  }
+
+    .banner {
+		background: linear-gradient(to bottom, #990000, #ea3b52);
+		color: white;
+		padding: 1.5em;
+		text-align: center;
+		border-radius: 25px;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+	  }
+    .banner h1 {
+		font-size: 2.35em;
+		font-family:pt-serif;
+		color: white;
+		text-shadow:
+        -1px -1px 0 black,
+         1px -1px 0 black,
+        -1px  1px 0 black,
+         1px  1px 0 black;
+		margin-bottom: 0.2em;
+	  }
+
+	  .banner h3 {
+		  margin-top: 0;
+		  font-size: 1.35em;
+		  color:white;
+	  }
+	  
+	  .banner a {
+		  display: inline-block;           
+		  padding: 0.4em 0.9em;            
+		  border-radius: 5px;       
+		  transition: background 0.3s, box-shadow 0.3s;
+		  text-decoration: none;
+	  }
+	  .banner a:hover {
+		  background: rgba(195, 195, 195, 0.27);  
+		  cursor: pointer;                   
+	  }
+	  
+	nav { 
+		background: #fddb53;
+		border-radius: 15px;
+		box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+		position: sticky;
+        top: 0;
+        z-index: 1000;
+	  }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+	  gap:80px;
+	  font-size:1.15em;
+    }
+    nav ul li {
+      position: relative;
+      margin: 0 0.5em;
+    }
+	  
+   nav ul li > a,
+   nav ul li .natv-btn {
+      color: white;
+      background: none;
+      border: none;
+      padding: 1.16em;
+      font-size: 1em;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      transition: background-color 0.25s ease-out, color 0.25s ease-out;
+   }
+
+   nav ul li > a:hover,
+   nav ul li > a:focus,
+   nav ul li > a:active,
+   nav ul li .natv-btn:hover,
+   nav ul li .natv-btn:focus,
+   nav ul li .natv-btn:active {
+      background-color: #EBB105;
+      color: #ffffff;
+   }
+ 
+    .natv-btn,
+    nav ul li > a {
+      color: white;
+      background: none;
+      border: none;
+      padding: 1em;
+      text-decoration: none;
+      font-size: 1em;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .natv-btn .arrow {
+		color:black;
+      display: inline-block;
+      margin-left: 0.3em;
+      font-size: 0.65em;
+      transition: transform 0.3s ease;
+    }
+    
+	 .nav-text{font-family:publico; font-size:1.1em; color:black;}
+	  
+    .submenu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: white;
+      color: #775F00;
+      border: 1px solid #ccc;
+      min-width: 8em;
+      display: none;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+    .submenu a {
+      display: block;
+      padding: 0.75em 1em;
+      text-decoration: none;
+      color: inherit;
+    }
+    .submenu a:hover {
+      background: #efefef;
+    }
+
+    .dropdown.is-open .submenu {
+      display: block;
+    }
+    .dropdown.is-open .arrow {
+      transform: rotate(180deg);
+    }
+	  
+	  /* --- mobile nav --- */
+.mobile-header {
+  display: none;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 2001;
+}
+.hamburger {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.9rem;
+  cursor: pointer;
+  padding: 6px;
+}
+
+.mobile-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  z-index: 1999;
+  opacity: 0;
+  transition: opacity .25s ease;
+}
+.mobile-overlay.show {
+	display:block;
+	opacity:1; 
+	  }
+
+.mobile-nav {
+  position: fixed;
+  top: 0;
+  right: -280px;
+  width: 280px;
+  height: 100%;
+  background: #C7A622;     
+  box-shadow: -4px 0 12px rgba(0,0,0,.4);
+  transition: right .32s ease;
+  z-index: 2000;
+  padding-top: 60px;      
+  overflow-y: auto;
+}
+
+.mobile-nav.open { 
+	right: 0; 
+	  }
+
+.mobile-nav ul        { 
+	display: block !important; 
+	margin: 0;
+	padding: 0; 
+	list-style: none;
+	  }
+	  
+.mobile-nav li  { 
+	display: block !important;
+	border-bottom: 1px solid rgba(255,255,255,0.12); 
+	  }
+	  
+.mobile-nav a,
+.mobile-nav .natv-btn {
+	display: block !important; 
+	width: 100%;
+	text-align: left; 
+	padding: 14px 16px; 
+	color: #fff; 
+	text-decoration: none; 
+	background: none; 
+	border: 0; 
+	cursor: pointer; 
+	font-family: publico;
+	font-size: 1rem; 
+	  }
+	  
+.mobile-nav a:hover,
+.mobile-nav .natv-btn:hover { 
+	background: rgba(0,0,0,0.08);
+	  }
+	  
+	  @media (max-width: 991px) {
+  .mobile-header { 
+	  display: block;
+		  }
+		  
+  nav:not(.mobile-nav) { 
+	  display: none !important;
+		  } 
+}
+	  
+@media (min-width: 992px) {
+	
+  .mobile-header, .mobile-nav, .mobile-overlay { 
+	  display: none !important; 
+	}
+}
+	  
+	  .main-home{
+		  background-color:transparent;
+		  padding: 4px 4px 23px 4px;
+		  flex-direction: column;
+		  display: flex;
+		  gap: 30px;
+	  }
+	  
+	.intro{
+		background-color: #fdfdfd;
+    border: 1px solid #eee;
+    padding: 30px;
+    border-radius: 27px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+		scroll-margin-top: 100px;
+	  }
+	  .intro-cta {
+        display: inline-block;
+        background-color: #F48155 !important;   
+        color: white !important;
+        padding: 0.8em 1.5em;
+        text-decoration: none;
+        border-radius: 4px;
+        font-size: 1em;
+		letter-spacing: 0.037em;
+        font-weight: bold;
+        transition: background-color 0.2s ease, transform 0.2s ease;
+      }
+     .intro-cta:hover, .intro-cta:focus {
+		transform: translateY(-2px);
+	  }
+	   .intro2-cta {
+          display: inline-block;
+        background-color: #F46A55 !important;   
+        color: white !important;
+        padding: 0.8em 1.5em;
+        text-decoration: none;
+        border-radius: 4px;
+        font-size: 1em;
+		   letter-spacing: 0.037em;
+        font-weight: bold;
+        transition: background-color 0.2s ease, transform 0.2s ease;
+      }
+     .intro2-cta:hover, .intro2-cta:focus {
+		transform: translateY(-2px);
+	  }
+	  
+	  .intro3-cta {
+        display: inline-block;
+        background-color: #F46784 !important;   
+        color: white !important;
+        padding: 0.8em 1.5em;
+        text-decoration: none;
+        border-radius: 4px;
+        font-size: 1em;
+		  letter-spacing: 0.037em;
+        font-weight: bold;
+        transition: background-color 0.2s ease, transform 0.2s ease;
+      }
+     .intro3-cta:hover, .intro2-cta:focus {
+		transform: translateY(-2px);
+	  }
+     .cta-container {
+        display: flex;
+        gap: 30px; 
+       }
+	  
+	  @media (max-width: 600px) {
+  .cta-container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+  }
+}
+	  
+	.faqs{
+		background-color: #fdfdfd;
+    border: 1px solid #eee;
+    padding: 30px;
+    border-radius: 27px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);  
+		scroll-margin-top: 100px;
+	}
+	  
+	   .faq-item {
+      border-bottom: 1px solid #ddd;
+      padding: 1em 0;
+    }
+
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1.05em;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      margin-top: 0.5em;
+      color: #333;
+    }
+
+	  .faq-question span {
+		  font-size: 1.15em;
+	  }
+	  
+	  .faq-answer p {
+		  font-size: 1.09em;
+	  }
+	  
+    .faq-item.active .faq-answer {
+      max-height: 500px;
+    }
+
+    .arrow {
+      transition: transform 0.3s ease;
+    }
+
+    .faq-item.active .arrow {
+      transform: rotate(180deg);
+    }
+	  
+	.uni{
+	   background-color: #fdfdfd;
+       border: 1px solid #eee;
+       padding: 30px;
+       border-radius: 27px;
+       box-shadow: 0 2px 10px rgba(0,0,0,0.08);  
+	   scroll-margin-top: 100px;
+	  }
+	 .carousel-wrapper {
+		 position: relative;
+		 margin-top: 20px;
+		 overflow: hidden;
+	  }
+    .card-list {
+		display: flex;
+		transition: transform 0.5s ease;
+	  }
+    .card {
+		flex: 0 0 calc(32% - 20px);
+		margin: 0 10px;
+		border-radius: 8px;
+		box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+		padding: 10px;
+		text-align: center;
+		width: auto;
+	  }
+    .card img {
+		width: 65%;
+		height: auto;
+		border-radius: 4px;
+	 }
+    .carousel-btn { 
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		background: rgba(0,0,0,0.5);
+		color: white;
+		border: none;
+		font-size: 2rem;
+		padding: 0 10px;
+		cursor: pointer;
+		z-index: 10;
+	  }
+    .carousel-btn.prev { 
+		left: 0;
+	  }
+    .carousel-btn.next {
+		right: 0;
+	  }
+    .carousel-btn:disabled {
+		background: rgba(0,0,0,0.2); 
+		cursor: not-allowed; 
+	  }
+	  
+	  .login-icon {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 3000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+}
+.modal-content {
+  background: white;
+  margin: 8% auto;
+  padding: 25px;
+  width: 320px;
+  border-radius: 10px;
+  text-align: center;
+  position: relative;
+}
+.modal-content img {
+  width: 100px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+.modal-content input {
+  width: 88%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.modal-content button {
+  width: 95%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 8px;
+  cursor: pointer;
+}
+	  
+.login-btn { 
+	background: #7dc27d;
+	color: white; 
+	  }
+.cancel-btn { 
+	background: #f36c60; 
+	color: white;
+	  }
+.modal .close {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+	  .mobile-auth{
+		  margin-top: 3em;
+	  }
+	  
+@media (max-width: 991px) {
+  .login-icon { display: none; }
+  .mobile-auth { display: block !important; }
+}
+@media (min-width: 992px) {
+  .mobile-auth { display: none !important; }
+}
+	  
+	  @media (max-width: 768px) {
+		  .main-home {
+			  padding: 20px 20px 20px 20px;
+		  }
+  .card {
+    flex: 0 0 90%; 
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 991px) {
+  .card {
+    flex: 0 0 calc(48% - 20px);
+  }
+}
+	  
+	  @media (max-width: 600px) {
+  .banner h1 {
+    font-size: 1.6em;
+  }
+
+  .intro, .faqs, .uni {
+    padding: 20px;
+  }
+
+  .intro p, .faqs p, .uni p {
+    font-size: 1em;
+  }
+}
+  </style>
+</head>
+	
+<body>
+
+  <div class="banner">
+    <a href="Main.html">
+		<h1>Mandarin Minds</h1>
+		<h3>Resources and scholarships for curious minds!</h3>
+	  </a>
+	  <img src="avatar.png" alt="Login" class="login-icon" id="desktopLogin">
+  </div>
+	
+	<div class="mobile-header">
+  <button class="hamburger" id="hamburger" aria-expanded="false" aria-controls="mobileNav">&#9776;</button>
+</div>
+<div class="mobile-overlay" id="mobileOverlay" aria-hidden="true"></div>
+<nav class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <ul>
+    <li>
+	  <a href="Home.html">Home</a>
+	  <a href="Scholarship.html">Scholarship</a>
+	  <a href="Courses.html">Courses</a>
+      <a href="Contact.html">Contact</a>
+    </li>
+	  <li class="mobile-auth">
+		  <a href="#" id="mobileLogin">Login</a>
+		  <a href="#">Logout</a>
+	  </li>
+  </ul>
+</nav>
+	
+  <nav>
+    <ul>
+        <li class="dropdown">
+        <button class="natv-btn">
+			<span class="nav-text">Home</span> <span class="arrow">▼</span>
+        </button>
+        <div class="submenu">
+          <a href="Home.html#intro">Introduction to Our Website</a>
+		  <a href="Home.html#faqs">FAQs about us</a>
+		  <a href="Home.html#uni">China Universities</a>
+        </div>
+      </li>
+
+      <li class="dropdown">
+        <button class="natv-btn">
+        <span class="nav-text">Scholarship</span> <span class="arrow">▼</span>
+        </button>
+        <div class="submenu">
+          <a href="Scholarship.html">Scholarship List</a>
+        </div>
+      </li>
+
+      <li class="dropdown">
+        <button class="natv-btn">
+         <span class="nav-text">Courses</span> <span class="arrow">▼</span>
+        </button>
+        <div class="submenu">
+          <a href="Courses.html#courses">Courses</a>
+		  <a href="Courses.html#app">Applications</a>
+		  <a href="Courses.html#yt">Youtube Channels</a>
+          <a href="Courses.html#books">Books</a>
+        </div>
+      </li>
+
+      <li style="font-size:1.15em;">
+		  <a href="Contact.html" style="color: black;">Contact</a>
+		</li>
+    </ul>
+  </nav>
+	
+	<div id="loginModal" class="modal">
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<img src="avatar.png" alt="User">
+			<h2>Login</h2>
+			<input type="text" placeholder="Username">
+			<input type="password" placeholder="Password">
+			<button class="login-btn">Login</button>
+			<button class="cancel-btn">Cancel</button>
+		</div>
+	</div>
+	
+<main class="main-home">
+    <section id="intro" class="intro">
+	<h1 style="margin-top: 0; border-bottom: 3px solid #B11218; padding-bottom: 12px; margin-bottom: 20px; font-size: 1.8em;">Introduction to our website!</h1>
+		<p style="font-size:1.15em">This site was created in order to bring you the best possible opportunities and sources to study Chinese. Here you can search through scholarships, find useful courses, and benefit from other study materials all designed to help you continue improving your Chinese language skills. This site is meant for students such as yourself who are looking for clear, practical information to guide you through your journey. I hope this is your destination for funding, language learning, and education on China's rich academic potential. If you have questions or problems while diving through our website, please feel free to contact us any time. ENJOY!</p>
+		<div class="cta-container">
+		<a href="Scholarship.html" class="intro-cta">Start explore the scholarships!</a>
+		<a href="Courses.html" class="intro2-cta">See the suggested courses for learning Chinese</a>
+		<a href="Contact.html" class="intro3-cta">Contact us</a>
+		</div>
+	</section>
+	
+	<section id="faqs" class="faqs">
+	<h1 style="margin-top: 0; border-bottom: 3px solid #B11218; padding-bottom: 12px; margin-bottom: 20px; font-size: 1.8em;">FAQs about scholarships China and more</h1>
+		 <div class="faq">
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>1. What types of scholarships are available for international students in China?</span>
+        <span class="arrow">&#9662;</span>
+      </div>
+      <div class="faq-answer">
+        <p>China offers full scholarships, partial scholarships, and exchange program scholarships. These may cover tuition, accommodation, living expenses, and sometimes airfare.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>2. What are the requirements to apply for Chinese Scholarship?</span>
+        <span class="arrow">&#9662;</span>
+      </div>
+      <div class="faq-answer">
+        <p>It depends on the scholarship you are applying but mainly is you must be an international student (not a Chinese citizen). You must meet all of the requirements to study in your chosen field in China. Your application should be recommended by your home country’s official education authority or foundation.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>3. How many scholarships are available every year?</span>
+        <span class="arrow">&#9662;</span>
+      </div>
+      <div class="faq-answer">
+        <p>China has about 51,000 scholarships every year. You can check the scholarships in our website and research for more information.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>4. When is the application period for scholarships in China?</span>
+        <span class="arrow">&#9662;</span>
+      </div>
+      <div class="faq-answer">
+        <p>Most Chinese scholarships open between January and April each year, but some universities and provincial programs may have different deadlines.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>5. Do I need to know Chinese to apply for a scholarship?</span>
+        <span class="arrow">&#9662;</span>
+      </div>
+      <div class="faq-answer">
+        <p>Not always. Many programs are offered in English. However, if you choose a Chinese-taught program, you may need to pass the HSK test (Chinese proficiency exam). However, it is also important to know some basic phrases because only few people use english outside campus. If you want to improve your chinese skills, we offer you some of the learning sources that you can go check it out in Courses page.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>6. Are living expenses in China covered by scholarships?</span>
+        <span class="arrow">&#9662;</span>
+      </div>
+      <div class="faq-answer">
+        <p>For full scholarships, a monthly stipend is usually provided for living costs. Partial scholarships may not cover living expenses, so you may need additional funds.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>7. When is the application period for scholarships in China?</span>
+        <span class="arrow">&#9662;</span>
+      </div>
+      <div class="faq-answer">
+        <p>Most Chinese scholarships open between January and April each year, but some universities and provincial programs may have different deadlines which you need to see on the scholarship program that you want to apply (you can go check some of them in our Scholarship page).</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>8. Can I use Instagram, Facebook, Tiktok, Youtube, etc. in China?</span>
+        <span class="arrow">&#9662;</span>
+      </div>
+      <div class="faq-answer">
+        <p>Yes. But you need to have a VPN(if you are using China sim). the VPN we suggest is LetsVPN it may cost some money but it is the best one that always works.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>9. What are the important apps to use in China?</span>
+        <span class="arrow">&#9662;</span>
+      </div>
+      <div class="faq-answer">
+        <p>Alipay - an all in one app that could use in payments, taxi, post, etc. (better to create your account before going to China with your phone number and connect with your visa or mastercard. then after going, you can change to the chinese number and yor card will stay) <br> WeChat - For chatting, shopping, post photos, payment, etc. <br>美团 - for deliveries, groceries, food, and entertainment. <br> 淘宝特价版 - the best marketplace that has everthing you need.<br>Weibo and 小红书 - optional but it is similar to twitter(X) or instagram for entertainment.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>10. Do I need to prepare many stuffs to China?</span>
+        <span class="arrow">&#9662;</span>
+      </div>
+      <div class="faq-answer">
+        <p>No, You don't need to bring much stuff(e.g. clothes, stationary, etc.) because they are usually cheaper in China. But the things you should be brining is ur favorite national food, mdicines you are familiar with, etc.</p>
+      </div>
+    </div>
+			 
+	<div class="faq-item">
+      <div class="faq-question">
+        <span>11. Do I need to change sim before going to China?</span>
+        <span class="arrow">&#9662;</span>
+      </div>
+      <div class="faq-answer">
+        <p>Not necessary. You can use your own sim and buy a travel package (suggested for short terms that are less than a month). If the scholarship you chose is a lon-term one, we suggest to use a China sim.</p>
+      </div>
+    </div>
+  </div>
+
+	</section>
+
+	<section id="uni" class="uni">
+	<h1 style="margin-top: 0; border-bottom: 3px solid #B11218; padding-bottom: 12px; margin-bottom: 20px; font-size: 1.8em;">Top 10 China Universities and its Brief Information</h1>
+		<p></p>
+		 <div class="carousel-wrapper">
+        <button class="carousel-btn prev" id="prevBtn">&lt;</button>
+        <div class="card-list" id="cardList">
+          <div class="card"  style="background-color:#FCFFFA">
+			  <img src="tsinghua.png" alt="tsinghua">
+			  <h3>Tsinghua University</h3>
+			  <p style="font-size:1.17em">Tsinghua University established in 1911. It is located in northwest Beijing. It is the top 1 university in China. It covers many disciplines, for example, art, economics, education and more.</p>
+			</div>
+		   <div class="card"  style="background-color:#FCFFFA">
+			   <img src="peking.jpg" alt="peking">
+			   <h3 style="font-size:1.17em">Peking University</h3>
+			   <p>Peking University is a member of C9 league(similar to the Ivy League Group in the US), generally one of the highest ranked in China. This university established in 1988. It is located in Beijing.</p>
+			</div>
+		  <div class="card"  style="background-color:#FCFFFA">
+			  <img src="fudan.png" alt="fudan">
+			  <h3>Fudan University</h3>
+			  <p style="font-size:1.17em">Fudan University is the third rank in China that is located in Shanghai. It comprises of for campuses in downtown Shanghai, which are Handan, Fenglin, Zhangjiang, and Jiangwan.</p>
+			</div>
+		  <div class="card"  style="background-color:#FCFFFA">
+			  <img src="zhejiang.png" alt="zhejiang">
+			  <h3>Zhejiang University</h3>
+			  <p style="font-size:1.17em">Zhejiang University founded in 1897 one of China's oldest and most selective universities. It is the fourth rank in China and covers 12 academic disciplines. It is located in Hangzhou, Zhejiang.</p>
+		  </div>
+		  <div class="card"  style="background-color:#FCFFFA">
+			  <img src="shanghaijiaotong.jpg" alt="shanghai">
+			  <h3>Shanghai Jiao Tong University</h3>
+			  <p style="font-size:1.17em">Shanghai Jiao Tong University, located in Shanghai. There are several subjects taught here, for example, mechanical engineering, physics astronomy, humanities, and others.</p>
+			</div>
+		   <div class="card"  style="background-color:#FCFFFA">
+			   <img src="sci and tech.png" alt="sci and tech">
+			   <h3>Univeristy of Science and Technology of China</h3>
+			   <p style="font-size:1.17em">University of Science and Technology of China located in Hefei, Anhui. It is the sixth ranked university.</p>
+			</div>
+		  <div class="card"  style="background-color:#FCFFFA">
+			  <img src="nanjing.png" alt="nanjing">
+			  <h3>Nanjing University</h3>
+			  <p style="font-size:1.17em">Nanjing University is located in Nanjing, Jiangsu. This university consider as the seventh ranked in China.</p>
+			</div>
+		 <div class="card"  style="background-color:#FCFFFA">
+			 <img src="wuhan.jpeg" alt="wuhan">
+			 <h3>Wuhan University</h3>
+			 <p style="font-size:1.17em">Wuhan University is located in Harbin, Heilongjiang. It is consider as the eight ranked in China.</p>
+			</div>
+		 <div class="card"  style="background-color:#FCFFFA">
+			 <img src="beijing.png" alt="beijing">
+			 <h3>Beijing Normal University</h3>
+			 <p style="font-size:1.17em">Beijing Normal University, located in Beijing. This is the ninth ranked university in China.</p>
+			</div>
+          <div class="card"  style="background-color:#FCFFFA">
+			  <img src="harbin.jpg" alt="harbin">
+			  <h3>Harbin Institute of Technology</h3>
+			  <p style="font-size:1.17em">Harbin Institute of Technology is located in Beijing. This is the tenth ranked university in China.</p>
+			</div>
+        </div>
+        <button class="carousel-btn next" id="nextBtn">&gt;</button>
+      </div>
+	</section>
+</main>
+	
+  <footer style="background-color:#9A0909; grid-area: footer; color: white; padding: 20px; text-align: center; border-radius: 18px; box-shadow: 0 2px 8px rgba(0,0,0,0.4); font-size: 1em;">
+    <p>© China Scholarship Information and Chinese Language Learning Resources</p>
+  </footer>
+
+	 <script>
+
+    const dropdowns = document.querySelectorAll('.dropdown');
+
+    dropdowns.forEach(dd => {
+      const btn = dd.querySelector('button');
+      btn.addEventListener('click', evt => {
+        evt.stopPropagation();
+		  
+        dropdowns.forEach(other => {
+          if (other !== dd) other.classList.remove('is-open');
+        });
+		  
+        dd.classList.toggle('is-open');
+      });
+    });
+
+    document.addEventListener('click', () => {
+      dropdowns.forEach(dd => dd.classList.remove('is-open'));
+    });
+  </script>
+	
+	  <script>
+    (function(){
+      const list = document.getElementById('cardList');
+      const prev = document.getElementById('prevBtn');
+      const next = document.getElementById('nextBtn');
+      const cards = list.children;
+      const total = cards.length;
+      const visible = 3;
+      let index = 0;
+
+      function update() {
+        const cardWidth = cards[0].offsetWidth + 20;
+        list.style.transform = `translateX(-${index * cardWidth}px)`;
+        prev.disabled = index <= 0;
+        next.disabled = index >= total - visible;
+      }
+
+      prev.addEventListener('click', () => { index = Math.max(0, index - 1); update(); });
+      next.addEventListener('click', () => { index = Math.min(total - visible, index + 1); update(); });
+
+      window.addEventListener('load', update);
+    })();
+  </script>
+	
+	<script>
+const hamburgerBtn = document.getElementById('hamburger');
+const mobileNav = document.getElementById('mobileNav');
+const overlay = document.getElementById('mobileOverlay');
+
+function openNav() {
+  mobileNav.classList.add('open');
+  overlay.classList.add('show');
+  hamburgerBtn.setAttribute('aria-expanded','true');
+  mobileNav.setAttribute('aria-hidden','false');
+  overlay.setAttribute('aria-hidden','false');
+}
+function closeNav() {
+  mobileNav.classList.remove('open');
+  overlay.classList.remove('show');
+  hamburgerBtn.setAttribute('aria-expanded','false');
+  mobileNav.setAttribute('aria-hidden','true');
+  overlay.setAttribute('aria-hidden','true');
+}
+
+hamburgerBtn.addEventListener('click', () => {
+  mobileNav.classList.contains('open') ? closeNav() : openNav();
+});
+
+overlay.addEventListener('click', () => {
+  closeNav();
+  document.querySelectorAll('.mobile-nav .dropdown.open').forEach(li => li.classList.remove('open'));
+});
+
+document.querySelectorAll('.mobile-nav .dropdown .natv-btn').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    const li = btn.parentElement;
+    li.classList.toggle('open');
+    const expanded = li.classList.contains('open');
+    btn.setAttribute('aria-expanded', String(expanded));
+  });
+});
+</script>
+	
+	  <script>
+    const items = document.querySelectorAll(".faq-item");
+
+    items.forEach(item => {
+      item.querySelector(".faq-question").addEventListener("click", () => {
+        item.classList.toggle("active");
+      });
+    });
+  </script>
+	
+	<script>
+  const modal = document.getElementById("loginModal");
+  const desktopLogin = document.getElementById("desktopLogin");
+  const mobileLogin = document.getElementById("mobileLogin");
+  const closeBtn = document.querySelector(".modal .close");
+  const cancelBtn = document.querySelector(".modal .cancel-btn");
+
+  function openModal() { modal.style.display = "block"; }
+  function closeModal() { modal.style.display = "none"; }
+
+  if (desktopLogin) desktopLogin.addEventListener("click", openModal);
+  if (mobileLogin) mobileLogin.addEventListener("click", openModal);
+  closeBtn.addEventListener("click", closeModal);
+  cancelBtn.addEventListener("click", closeModal);
+
+  window.addEventListener("click", (e) => {
+    if (e.target === modal) closeModal();
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,1212 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>China Scholarship</title>
+  <style>
+    html, body { 
+		box-sizing: border-box; 
+		margin: 0; 
+		padding: 0.3em; 
+	  }
+	  
+    body {
+		font-family:publico;
+		background-color:#FFFBEB;
+		overflow-x: hidden;
+	  }
+
+  .banner {
+		background: linear-gradient(to bottom, #990000, #ea3b52);
+		color: white;
+		padding: 1.5em;
+		text-align: center;
+		border-radius: 25px;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+	  }
+    .banner h1 {
+		font-size: 2.35em;
+		font-family:pt-serif;
+		color: white;
+		text-shadow:
+        -1px -1px 0 black,
+         1px -1px 0 black,
+        -1px  1px 0 black,
+         1px  1px 0 black;
+		margin-bottom: 0.2em;
+	  }
+
+	  .banner h3 {
+		  margin-top: 0;
+		  font-size: 1.35em;
+		  color:white;
+	  }
+	  
+	  .banner a {
+		  display: inline-block;           
+		  padding: 0.4em 0.9em;            
+		  border-radius: 5px;       
+		  transition: background 0.3s, box-shadow 0.3s;
+		  text-decoration: none;
+	  }
+	  .banner a:hover {
+		  background: rgba(195, 195, 195, 0.27);  
+		  cursor: pointer;                   
+	  }
+	nav { 
+		background: #fddb53;
+		border-radius: 15px;
+		box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+		position: sticky;
+        top: 0;
+        z-index: 1000;
+	  }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+	  gap:80px;
+	  font-size:1.15em;
+    }
+    nav ul li {
+      position: relative;
+      margin: 0 0.5em;
+    }
+	  
+   nav ul li > a,
+   nav ul li .natv-btn {
+      color: white;
+      background: none;
+      border: none;
+      padding: 1.16em;
+      font-size: 1em;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      transition: background-color 0.25s ease-out, color 0.25s ease-out;
+   }
+
+   nav ul li > a:hover,
+   nav ul li > a:focus,
+   nav ul li > a:active,
+   nav ul li .natv-btn:hover,
+   nav ul li .natv-btn:focus,
+   nav ul li .natv-btn:active {
+      background-color: #EBB105;
+      color: #ffffff;
+   }
+ 
+    .natv-btn,
+    nav ul li > a {
+      color: white;
+      background: none;
+      border: none;
+      padding: 1em;
+      text-decoration: none;
+      font-size: 1em;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .natv-btn .arrow {
+		color:black;
+      display: inline-block;
+      margin-left: 0.3em;
+      font-size: 0.65em;
+      transition: transform 0.3s ease;
+    }
+    
+	 .nav-text{font-family:publico; font-size:1.1em; color:black;}
+	  
+    .submenu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: white;
+      color: #775F00;
+      border: 1px solid #ccc;
+      min-width: 8em;
+      display: none;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+    .submenu a {
+      display: block;
+      padding: 0.75em 1em;
+      text-decoration: none;
+      color: inherit;
+    }
+    .submenu a:hover {
+      background: #efefef;
+    }
+
+    .dropdown.is-open .submenu {
+      display: block;
+    }
+    .dropdown.is-open .arrow {
+      transform: rotate(180deg);
+    }
+	  
+	  /* --- mobile nav --- */
+.mobile-header {
+  display: none;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 2001;
+}
+.hamburger {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.9rem;
+  cursor: pointer;
+  padding: 6px;
+}
+
+.mobile-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  z-index: 1999;
+  opacity: 0;
+  transition: opacity .25s ease;
+}
+.mobile-overlay.show { display:block; opacity:1; }
+
+.mobile-nav {
+  position: fixed;
+  top: 0;
+  right: -280px;
+  width: 280px;
+  height: 100%;
+  background: #C7A622;     
+  box-shadow: -4px 0 12px rgba(0,0,0,.4);
+  transition: right .32s ease;
+  z-index: 2000;
+  padding-top: 60px;      
+  overflow-y: auto;
+}
+
+.mobile-nav.open { right: 0; }
+
+.mobile-nav ul        { 
+	display: block !important; 
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	  }
+	  
+.mobile-nav li { 
+	display: block !important;
+	border-bottom: 1px solid rgba(255,255,255,0.12);
+	  }
+	  
+.mobile-nav a,
+.mobile-nav .natv-btn {
+	display: block !important;
+	width: 100%; 
+	text-align: left;
+	padding: 14px 16px;
+	color: #fff; 
+	text-decoration: none; 
+	background: none;
+	border: 0;
+	cursor: pointer; 
+	font-family: publico;
+	font-size: 1rem;
+	  }
+	  
+.mobile-nav a:hover,
+.mobile-nav .natv-btn:hover {
+	background: rgba(0,0,0,0.08); 
+	  }
+	  
+	  @media (max-width: 991px) {
+  .mobile-header { 
+	  display: block; 
+		  }
+  nav:not(.mobile-nav) {
+	  display: none !important;
+		  } 
+}
+@media (min-width: 992px) {
+  .mobile-header, .mobile-nav, .mobile-overlay { 
+	  display: none !important; 
+	}
+	  }
+	  
+	.main-home{
+		  background-color:transparent;
+		  padding: 4px 4px 23px 4px;
+		  flex-direction: column;
+		  display: flex;
+		gap:30px;
+	  }
+	  
+	  .courses{
+		background-color: #fdfdfd;
+        border: 1px solid #eee;
+        padding: 30px;
+        border-radius: 27px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+	    scroll-margin-top: 100px;
+	  }
+	  
+	  .course-card {
+        background-color: #fff;
+		border: 1px solid #ddd;
+		padding: 25px;
+		border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+		transition: transform 0.2s, box-shadow 0.2s;
+		display: flex;
+        align-items: flex-start;     
+        gap: 1rem;                   
+        margin-bottom: 1.5rem;  
+     }
+	  
+	 .course-content {
+        flex: 1;             
+     }
+	  
+      .course-content h3 {
+		  color: #530000 !important;
+        margin: 0 0 0.35rem;
+        font-size: 1.2rem;
+     }
+	  
+      .course-content p {
+        margin: 0 0 0.75rem;
+        line-height: 1.5;
+     }
+	  
+      .course-cta {
+        display: inline-block;
+        background-color: #E26D6D !important;   
+        color: white !important;
+        padding: 0.6em 1.2em;
+        text-decoration: none;
+        border-radius: 4px;
+        font-size: 0.95rem;
+        font-weight: bold;
+        transition: background-color 0.2s ease;
+      }
+	  
+	  .course-card + .course-card {
+        margin-top: 1.5rem;
+     }
+	  
+    .course-card:hover {
+		transform: translateY(-7px);
+		box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+	  }
+	  
+    .course-card h3 {
+		color: #0D513C;
+		margin-top: 0;
+		margin-bottom: 12px;
+		font-size: 1.4em;
+	  }
+	  
+    .course-card p {
+		font-size: 0.98em;
+		color: #333;
+	  }
+	  
+    .course-card a { color: #197559;
+		text-decoration: none;
+		font-weight: 600;
+		transition: color 0.2s;
+	  }
+	  
+    .course-card a:hover {
+		color:#197559;
+		text-decoration: underline;
+	  }
+	  
+	  .app{
+		background-color: #fdfdfd;
+        border: 1px solid #eee;
+        padding: 30px;
+        border-radius: 27px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+		scroll-margin-top: 100px;
+	  }
+	  
+	   .app-article{
+ 	    display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(430px, 1fr));
+        gap: 28px;
+	    margin-top: 10px;
+		align-items: stretch;
+	  }
+	  
+	  .app-card {
+        background-color: #fff;
+		border: 1px solid #ddd;
+		padding: 25px;
+		border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+		transition: transform 0.2s, box-shadow 0.2s;
+		display: flex;
+        align-items: flex-start;     
+        gap: 1rem;                   
+		min-height: 200px;
+     }
+		  
+	  .app-card-image img {
+        width: 200px;
+        height: auto;
+        object-fit: cover;   
+        border-radius: 8px; 
+        flex-shrink: 0;   
+     }
+	  
+	  .app-content {
+        flex: 1;             
+     }
+	  
+      .app-content h3 {
+        margin: 0 0 0.35rem;
+        font-size: 1.2rem;
+     }
+	  
+      .app-content p {
+        margin: 0 0 0.75rem;
+        line-height: 1.5;
+     }
+	  
+      .app-cta {
+        display: inline-block;
+        background-color: #E26D6D !important;   
+        color: white !important;
+        padding: 0.6em 1.2em;
+        text-decoration: none;
+        border-radius: 4px;
+        font-size: 0.95rem;
+        font-weight: bold;
+        transition: background-color 0.2s ease;
+      }
+	  
+    .app-card:hover {
+		transform: translateY(-7px);
+		box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+	  }
+	  
+    .app-card h3 {
+		color: #530000;
+		margin-top: 0;
+		margin-bottom: 12px;
+		font-size: 1.4em;
+	  }
+	  
+    .app-card p {
+		font-size: 0.98em;
+		color: #333;
+	  }
+	  
+    .app-card a { color: #197559;
+		text-decoration: none;
+		font-weight: 600;
+		transition: color 0.2s;
+	  }
+	  
+    .app-card a:hover {
+		color:#197559;
+		text-decoration: underline;
+	  }
+	  
+	.yt{
+	background-color: #fdfdfd;
+    border: 1px solid #eee;
+    padding: 30px;
+    border-radius: 27px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08); 
+	scroll-margin-top: 100px;
+	}
+	  
+	  .carousel-container {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+	  
+.carousel {
+  display: flex;
+  gap: 1rem;
+}
+	  
+	  .yt-card {
+          background-color: #fff;
+		border: 1px solid #ddd;
+		padding: 25px;
+		border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+		transition: transform 0.2s, box-shadow 0.2s;
+		display: flex;
+        align-items: flex-start;     
+        gap: 1rem;     
+		margin-top: 1em;
+        margin-bottom: 1.5rem;  
+		flex: 0 0 30%; 
+        scroll-snap-align: start;
+        flex-direction: column;
+     }
+	  
+	  .yt-card-image img {
+		width: 100%;
+        height: auto;
+        object-fit: cover;   
+        border-radius: 8px; 
+        flex-shrink: 0;  
+     }
+	  
+	  .yt-content {
+        flex: 1;  
+	    padding: 1rem 0;
+     }
+	  
+      .yt-content h3 {
+		  color: #530000 !important;
+        margin: 0 0 0.35rem;
+        font-size: 1.2rem;
+     }
+	  
+      .yt-content p {
+        margin: 0 0 0.75rem;
+        line-height: 1.5;
+     }
+	  
+      .yt-cta {
+        display: inline-block;
+        background-color: #E26D6D !important;   
+        color: white !important;
+        padding: 0.6em 1.2em;
+        text-decoration: none;
+        border-radius: 4px;
+        font-size: 0.95rem;
+        font-weight: bold;
+        transition: background-color 0.2s ease;
+      }
+	  
+    .yt-card:hover {
+		transform: translateY(-7px);
+		box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+	  }
+	  
+    .yt-card h3 {
+		color: #0D513C;
+		margin-top: 0;
+		margin-bottom: 12px;
+		font-size: 1.4em;
+	  }
+	  
+    .yt-card p {
+		font-size: 0.98em;
+		color: #333;
+	  }
+	  
+    .yt-card a { color: #197559;
+		text-decoration: none;
+		font-weight: 600;
+		transition: color 0.2s;
+	  }
+	  
+    .yt-card a:hover {
+		color:#197559;
+		text-decoration: underline;
+	  }
+	  
+.books {
+  background-color: #fdfdfd;
+  border: 1px solid #eee;
+  padding: 30px;
+  border-radius: 27px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  scroll-margin-top: 100px;
+}
+
+.book-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: flex-start;
+}
+
+.book-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
+  flex: 0 1 calc(25% - 1rem);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.book-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.book-card-image {
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  box-sizing: border-box;
+}
+
+.book-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.book-content h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.4em;
+  color: #530000;
+}
+
+.book-content p {
+  margin: 0;
+  font-size: 0.98em;
+  line-height: 1.5;
+  color: #333;
+}
+	  
+	  .book-cta {
+        display: inline-block;
+        background-color: #E26D6D !important;   
+        color: white !important;
+		margin-top: 1em;
+        padding: 0.6em 1.2em;
+        text-decoration: none;
+        border-radius: 4px;
+        font-size: 0.95rem;
+        font-weight: bold;
+        transition: background-color 0.2s ease;
+      }
+	  
+	  .book-content a { 
+		  color: #197559;
+		  text-decoration: none;
+		  font-weight: 600;
+		  transition: color 0.2s;
+	  }
+	  
+    .book-content a:hover {
+		color:#197559;
+		text-decoration: underline;
+	  }
+	  
+	  .login-icon {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 3000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+}
+.modal-content {
+  background: white;
+  margin: 8% auto;
+  padding: 25px;
+  width: 320px;
+  border-radius: 10px;
+  text-align: center;
+  position: relative;
+}
+.modal-content img {
+  width: 100px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+.modal-content input {
+  width: 88%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.modal-content button {
+  width: 95%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 8px;
+  cursor: pointer;
+}
+	  
+.login-btn { 
+	background: #7dc27d;
+	color: white; 
+	  }
+.cancel-btn { 
+	background: #f36c60; 
+	color: white;
+	  }
+
+.modal .close {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+	  .mobile-auth{
+		  margin-top: 3em;
+	  }
+	  
+@media (max-width: 991px) {
+  .login-icon { display: none; }
+  .mobile-auth { display: block !important; }
+}
+@media (min-width: 992px) {
+  .mobile-auth { display: none !important; }
+}
+	  
+	@media (max-width: 991px) {
+     .mobile-header { display: block; }
+      nav:not(.mobile-nav) { display: none !important; } 
+     }
+   @media (min-width: 992px) {
+     .mobile-header, .mobile-nav, .mobile-overlay { display: none !important; }
+}
+
+@media (max-width: 991px) {
+	.main-home {
+		padding: 20px 20px 20px 20px;
+	}
+  .book-card {
+    flex: 0 1 calc(50% - 1rem);
+  }
+}
+@media (max-width: 600px) {
+	.main-home {
+		padding: 20px 20px 20px 20px;
+	}
+  .book-card {
+    flex: 0 1 100%;
+  }
+}
+
+@media (max-width: 768px) {
+	.main-home {
+		padding: 20px 20px 20px 20px;
+	}
+  .app-article {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 768px) {
+	.main-home {
+		padding: 20px 20px 20px 20px;
+	}
+  .carousel {
+    flex-wrap: nowrap;
+  }
+  .yt-card {
+    flex: 0 0 80%;
+  }
+}
+@media (max-width: 480px) {
+  .yt-card {
+    flex: 0 0 95%;
+  }
+}
+	
+	@media (max-width: 768px) {
+		.main-home {
+		padding: 20px 20px 20px 20px;
+	}
+  .book-card {
+    flex: 0 1 calc(50% - 1rem);
+  }
+
+  .yt-card {
+    flex: 0 0 80%;
+  }
+
+  .app-card {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .app-card-image img {
+    width: 100%;
+  }
+}
+  </style>
+</head>
+	
+<body>
+
+     <div class="banner">
+    <a href="Main.html">
+		<h1>Mandarin Minds</h1>
+		<h3>Resources and scholarships for curious minds!</h3>
+	  </a>
+		 <img src="avatar.png" alt="Login" class="login-icon" id="desktopLogin">
+  </div>
+
+	<div class="mobile-header">
+  <button class="hamburger" id="hamburger" aria-expanded="false" aria-controls="mobileNav">&#9776;</button>
+</div>
+<div class="mobile-overlay" id="mobileOverlay" aria-hidden="true"></div>
+<nav class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <ul>
+    <li>
+	  <a href="Home.html">Home</a>
+	  <a href="Scholarship.html">Scholarship</a>
+	  <a href="Courses.html">Courses</a>
+      <a href="Contact.html">Contact</a>
+    </li>
+	  <li class="mobile-auth">
+		  <a href="#" id="mobileLogin">Login</a>
+		  <a href="#">Logout</a>
+	  </li>
+  </ul>
+</nav>
+	
+  <nav>
+    <ul>
+        <li class="dropdown">
+        <button class="natv-btn">
+			<span class="nav-text">Home</span> <span class="arrow">▼</span>
+        </button>
+        <div class="submenu">
+          <a href="Home.html#intro">Introduction to Our Website</a>
+		  <a href="Home.html#faqs">FAQs about us</a>
+		  <a href="Home.html#uni">China Universities</a>
+        </div>
+      </li>
+
+      <li class="dropdown">
+        <button class="natv-btn">
+        <span class="nav-text">Scholarship</span> <span class="arrow">▼</span>
+        </button>
+        <div class="submenu">
+          <a href="Scholarship.html">Scholarship List</a>
+        </div>
+      </li>
+
+      <li class="dropdown">
+        <button class="natv-btn">
+         <span class="nav-text">Courses</span> <span class="arrow">▼</span>
+        </button>
+        <div class="submenu">
+          <a href="Courses.html#courses">Courses</a>
+		  <a href="Courses.html#app">Applications</a>
+		  <a href="Courses.html#yt">Youtube Channels</a>
+          <a href="Courses.html#books">Books</a>
+        </div>
+      </li>
+
+      <li style="font-size:1.15em;"><a href="Contact.html"  style="color: black;">Contact</a></li>
+    </ul>
+  </nav>
+	
+	<div id="loginModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <img src="avatar.png" alt="User">
+    <h2>Login</h2>
+    <input type="text" placeholder="Username">
+    <input type="password" placeholder="Password">
+    <button class="login-btn">Login</button>
+    <button class="cancel-btn">Cancel</button>
+  </div>
+</div>
+	
+<main class="main-home">
+    <section id="courses" class="courses">
+	<h1 style="margin-top: 0; border-bottom: 3px solid #B11218; padding-bottom: 12px; margin-bottom: 20px; font-size: 1.8em;">Some Chinese Tutoring School For Thai Learner</h1>
+		<article class="course-card">
+          <div class="course-content">
+             <h3>Zhongxin สถาบันสอนภาษาจีนจงซิน</h3>
+             <p>Zhongxin Chinese Language Institute uses the international standard curriculum from Beijing Language and Culture University (BLCU). The courses are suitable for both beginners and advanced learners, and are taught by qualified Chinese and Thai teachers with real teaching experience. <br> Students can join online Chinese courses at any level, from basic to advanced, with flexible scheduling and the choice of private or group classes.<br><br> Available courses include: Basic Chinese, Children’s Chinese, HSK preparation, Business Chinese, and more.</p>
+             <a href="https://zhongxinth.com/" class="course-cta">Go to the tutoring school's website</a>
+          </div>
+        </article>
+		
+			<article class="course-card">
+          <div class="course-content">
+             <h3>OKLS</h3>
+             <p>OKLS carefully selects and develops the most suitable textbooks for each course. Every course are designed to fit the learner’s age and learning goals, making study both practical and effective. All programs are officially accredited by the Ministry of Education. <br> OKLS has also received official recognition from the Ministry of Education, earning a “Very Good” rating in its internal quality assurance from the Office of the Private Education Commission. <br><br> Courses offered: Chinese for Children, General Chinese for Adults.</p>
+             <a href="https://www.okls.net/th/" class="course-cta">Go to the tutoring school's website</a>
+          </div>
+        </article>
+		
+		<article class="course-card">
+          <div class="course-content">
+             <h3>Globish Chinese</h3>
+             <p>Globish offers online Chinese courses for learners of all ages, from beginners to advanced. The programs focus on practical speaking skills, helping students improve pronunciation, fluency, and confidence through real conversations with experienced Chinese teachers who understand the needs of Thai learners.<br><br> Courses offered: Chinese for daily life, Chinese for work, HSK preparation, and etc.</p>
+             <a href="https://www.globish.co.th/chinese-course" class="course-cta">Go to the tutoring school's website</a>
+          </div>
+        </article>
+		
+		<article class="course-card">
+          <div class="course-content">
+             <h3>Open Durian</h3>
+             <p>Online Chinese Courses that doesn't required any prior knowledge. <br> Programs range from basic Chinese to HSK3 preparation, covering all four skills: listening, speaking, reading, and writing. After finishing the course you will definitely be able to speak Chinese. Learners can choose from 3 different study plans depending on their preferences. A support team is always available to provide guidance on Chinese language issues. <br><br> Courses offered: Quick Chinese Course, Pinyin Course, HSK3 Made Easy with Suilin, Beginner Chinese Course, and more.</p>
+             <a href="https://www.opendurian.com/chinese_buffet/" class="course-cta">Go to the tutoring school's website</a>
+          </div>
+        </article>
+		
+		<article class="course-card">
+          <div class="course-content">
+             <h3>โรงเรียนสอนภาษาจีนเพียรอักษร (หงเหล่าซือสอนภาษาจีน)</h3>
+             <p>All courses are led by Hong Laoshi, founder of Pien Aksorn Chinese Language School, offering affordable Chinese education with Ministry-recognized certificates. His online programs use practical dialogues, include versions with and without Pinyin, and provide exercises with answer keys. <br><br> ourses offered: Chinese for beginners, Standard Chinese, HSK preparation, and more.</p>
+             <a href="https://honglaoshi.com/online-chinese-course/" class="course-cta">Go to the tutoring school's website</a>
+          </div>
+        </article>
+		
+				<article class="course-card">
+          <div class="course-content">
+             <h3>Panda chinese</h3>
+             <p>Panda Chinese is a specialized Chinese language school with native-speaking teachers who make learning more effective. Teachers can also communicate clearly in Thai, ensuring language is not a barrier. The school offers a variety of courses suitable for all ages and levels, allowing even beginners to become proficient in Chinese. <br><br>The courses include HSK-level video lessons focusing on grammar, one-on-one classes that emphasize listening and speaking skills, and a lot more.</p>
+             <a href="https://pandachinese.online/" class="course-cta">Go to the tutoring school's website</a>
+          </div>
+        </article>
+	</section>
+	
+    <section id="app" class="app">
+	<h1 style="margin-top:0; border-bottom: 3px solid #B11218; padding-bottom: 12px; margin-bottom: 20px; font-size: 1.8em;">Some Recommended Application to Learn Chinese</h1>
+		<div class="app-article">
+		<article class="app-card">
+          <div class="app-card-image">
+             <img src="tenmin.jpeg" alt="tenmin">
+          </div>
+          <div class="app-content">
+             <h3>Tenmin</h3>
+             <p>An app for recommended for speaking practice.</p>
+             <a href="https://tenmin.ai/" target="_blank" rel="noopener noreferrer" class="app-cta">Go to the App</a>
+          </div>
+        </article>
+		<article class="app-card">
+            <div class="app-card-image">
+             <img src="hellochinese.jpeg" alt="hellochinese">
+          </div>
+          <div class="app-content">
+             <h3>HelloChinese</h3>
+             <p>An app to learn chinese for beginners. It is good for learning basic things and feels similar to duolingo.</p>
+             <a href="https://www.hellochinese.cc/" target="_blank" rel="noopener noreferrer" class="app-cta">Go to the App</a>
+          </div>
+          </article>
+		<article class="app-card">
+            <div class="app-card-image">
+             <img src="du.jpeg" alt="du">
+          </div>
+          <div class="app-content">
+             <h3>Du Chinese</h3>
+             <p>An application great for reading practice that have many story available to read. It is also has useful pinyin toggle.</p>
+             <a href="https://duchinese.net/" target="_blank" rel="noopener noreferrer" class="app-cta">Go to the App</a>
+          </div>
+          </article>
+		<article class="app-card">
+            <div class="app-card-image">
+             <img src="pleco.jpeg" alt="pleco">
+          </div>
+          <div class="app-content">
+             <h3>Pleco</h3>
+             <p>A dictionary app that works very well. Paid add-ons are available for better experience.</p>
+             <a href="https://www.pleco.com/" target="_blank" rel="noopener noreferrer" class="app-cta">Go to the App</a>
+          </div>
+          </article>
+		<article class="app-card">
+            <div class="app-card-image">
+             <img src="hellotalk.jpeg" alt="hellotalk">
+          </div>
+          <div class="app-content">
+             <h3>HelloTalk</h3>
+             <p>Connects you with native speakers to improve youe speaking skills. However, it is not recommended for beginners and shy people.</p>
+             <a href="https://web.hellotalk.com/" target="_blank" rel="noopener noreferrer" class="app-cta">Go to the App</a>
+          </div>
+          </article>
+		<article class="app-card">
+            <div class="app-card-image">
+             <img src="readbean.jpeg" alt="readbean">
+          </div>
+          <div class="app-content">
+             <h3>Read Bean</h3>
+             <p>An app that can work on both speaking and reading skills that is also adapts to your Chinese level.</p>
+             <a href="https://readbean.app/" target="_blank" rel="noopener noreferrer" class="app-cta">Go to the App</a>
+          </div>
+          </article>
+		<article class="app-card">
+            <div class="app-card-image">
+             <img src="wechat.jpeg" alt="wechat">
+          </div>
+          <div class="app-content">
+             <h3>WeChat</h3>
+             <p>An chatting app that you could learn Chinese slangs and ask questios anytime (since it is a chatting app so you need a friends to study in here).</p>
+             <a href="https://www.wechat.com/" target="_blank" rel="noopener noreferrer" class="app-cta">Go to the App</a>
+          </div>
+          </article>
+		</div>
+	</section>
+	
+	<section id="yt" class="yt">
+	<h1 style="margin-top: 0; border-bottom: 3px solid #B11218; padding-bottom: 12px; margin-bottom: 20px; font-size: 1.8em;">Youtube Channels to Learn Chinese</h1>
+	  <div class="carousel-container">
+        <div class="carousel">
+		<article class="yt-card">
+            <div class="yt-card-image">
+             <img src="poppyyang2.png" alt="poppyyang">
+          </div>
+          <div class="yt-content">
+             <h3>Poppy Yang</h3>
+             <p>This channel teaches about grammar and also give examples. Very easy to understand.</p>
+             <a href="https://www.youtube.com/@POPPYYANG" target="_blank" rel="noopener noreferrer" class="yt-cta">Go to the Channel</a>
+          </div>
+          </article>
+		<article class="yt-card">
+            <div class="yt-card-image">
+             <img src="zhanglaoshi2.png" alt="zhanglaoshi">
+          </div>
+          <div class="yt-content">
+             <h3>zhanglaoshi</h3>
+             <p>For people who wants to practice reading pinyin with a correct pronunciation of Chinese words.</p>
+             <a href="https://www.youtube.com/@zhanglaoshi" target="_blank" rel="noopener noreferrer" class="yt-cta">Go to the Channel</a>
+          </div>
+          </article>
+		<article class="yt-card">
+            <div class="yt-card-image">
+             <img src="honglaoshi2.png" alt="Honglaoshi">
+          </div>
+          <div class="yt-content">
+             <h3>Honglaoshi</h3>
+             <p>Explains about Chinese vocabulary and grammars and also have some courses to study.</p>
+             <a href="https://www.youtube.com/@HongLaoshi" target="_blank" rel="noopener noreferrer" class="yt-cta">Go to the Channel</a>
+          </div>
+          </article>
+		<article class="yt-card">
+            <div class="yt-card-image">
+             <img src="krupzin2.png" alt="krupzin">
+          </div>
+          <div class="yt-content">
+             <h3>Krup'zin Channel</h3>
+             <p>Many good tricks in preparing for HSK test.</p>
+             <a href="https://www.youtube.com/@krupzinchannel1998" target="_blank" rel="noopener noreferrer" class="yt-cta">Go to the Channel</a>
+          </div>
+          </article>
+		<article class="yt-card">
+            <div class="yt-card-image">
+             <img src="gracemandarin.png" alt="gracemandarin">
+          </div>
+          <div class="yt-content">
+             <h3>Grace Mandarin Chinese</h3>
+             <p>Funfacts about studying Chinese and many useful contents.</p>
+             <a href="https://www.youtube.com/@GraceMandarinChinese" target="_blank" rel="noopener noreferrer" class="yt-cta">Go to the Channel</a>
+          </div>
+          </article>
+		<article class="yt-card">
+            <div class="yt-card-image">
+             <img src="everydaychinese.png" alt="everydaychinese">
+          </div>
+          <div class="yt-content">
+             <h3>Everyday Chinese</h3>
+             <p>Explains variety of things in China. Have many interesting contents to watch to practice your Chinese skills.</p>
+             <a href="https://www.youtube.com/@EverydayChinese" target="_blank" rel="noopener noreferrer" class="yt-cta">Go to the Channel</a>
+          </div>
+          </article>
+		<article class="yt-card">
+            <div class="yt-card-image">
+             <img src="shuoshuochinese.png" alt="shuoshuochinese">
+          </div>
+          <div class="yt-content">
+             <h3>ShuoShuoChinese</h3>
+             <p>Talks about things in Chinese, also have a study courses and a Tiktok channel(that explains HSK daily).</p>
+             <a href="https://www.youtube.com/@EverydayChinese" target="_blank" rel="noopener noreferrer" class="yt-cta">Go to the Channel</a>
+          </div>
+          </article>
+	   </div>
+	 </div>
+	</section>
+
+	<section id="books" class="books">
+	<h1 style="margin-top: 0; border-bottom: 3px solid #B11218; padding-bottom: 12px; margin-bottom: 20px; font-size: 1.8em;">Some Recommended Chinese Learning Books for Thai Learner</h1>
+		<div class="book-container">
+		<article class="book-card">
+          <div class="book-card-image">
+             <img src="sentencechinese.jpeg" alt="sentencechinese">
+          </div>
+          <div class="book-content">
+             <h3>แต่งจีน 10,000 ประโยค</h3>
+             <p>This book is about making sentences in Chinese, wich is really useful.</p>
+			  <a href="https://www.opendurian.com/store/basic-chinese-sentence/" target="_blank" rel="noopener noreferrer" class="book-cta">Buy the book</a>
+          </div>
+        </article>
+		<article class="book-card">
+          <div class="book-card-image">
+             <img src="chinesepinyin.jpeg" alt="chinesepinyin">
+          </div>
+          <div class="book-content">
+             <h3>หนีห่าว...พินอิน</h3>
+             <p>It is about pinyin, an essential for learning Chinese in higher levels.</p>
+			  <a href="https://www.opendurian.com/store/nihao-pinyin/" target="_blank" rel="noopener noreferrer" class="book-cta">Buy the book</a>
+          </div>
+        </article>
+		<article class="book-card">
+          <div class="book-card-image">
+             <img src="chinesebook1.jpeg" alt="chinesebook1">
+          </div>
+          <div class="book-content">
+             <h3>ภาษาจีนระดับต้น 1 (ฉบับปรับปรุง)</h3>
+             <p>This suitable for beginners. It has many useful content and also have exercises that matches the lesson effectively.</p>
+			  <a href="https://www.naiin.com/product/Detail/204212/" target="_blank" rel="noopener noreferrer" class="book-cta">Buy the book</a>
+          </div>
+        </article>
+		<article class="book-card">
+          <div class="book-card-image">
+             <img src="chinesegrammar1.jpeg" alt="chinesegrammar1">
+          </div>
+          <div class="book-content">
+             <h3>ไวยากรณ์จีน สำหรับคนไทย</h3>
+             <p>A Chinese grammar for Thai learners.</p>
+			  <a href="https://www.youtube.com/@EverydayChinese" target="_blank" rel="noopener noreferrer" class="book-cta">Buy the book</a>
+          </div>
+        </article>
+		<article class="book-card">
+          <div class="book-card-image">
+             <img src="chinesegrammar2.jpeg" alt="chinesegrammar2">
+          </div>
+          <div class="book-content">
+             <h3>แบบฝึกหัด ไวยากรณ์จีน สำหรับคนไทย</h3>
+             <p>An exercise book from ไวยากรณ์จีน สำหรับคนไทย(the previous book) to practice the lessons you have learned.</p>
+			  <a href="https://www.youtube.com/@EverydayChinese" target="_blank" rel="noopener noreferrer" class="book-cta">Buy the book</a>
+          </div>
+        </article>
+		<article class="book-card">
+          <div class="book-card-image">
+             <img src="quickchinese.jpeg" alt="quickchinese">
+          </div>
+          <div class="book-content">
+             <h3>QUICK CHINESE ภาษาจีน พูดเลย!</h3>
+             <p>About some basic conversation to use in daily life in Chinese.</p>
+			  <a href="https://www.youtube.com/@EverydayChinese" target="_blank" rel="noopener noreferrer" class="book-cta">Buy the book</a>
+          </div>
+        </article>
+		<article class="book-card">
+          <div class="book-card-image">
+             <img src="chinese3in1.jpeg" alt="chinese3in1">
+          </div>
+          <div class="book-content">
+             <h3>CHINESE 3 in 1 เก่งจีน เล่มเดียวจบ ครบทุกด้าน</h3>
+             <p>A Chinese book that you could get important grammars, phrases use in daily life and tons of vocabulary.</p>
+			  <a href="https://www.youtube.com/@EverydayChinese" target="_blank" rel="noopener noreferrer" class="book-cta">Buy the book</a>
+          </div>
+        </article>
+		</div>
+	</section>
+</main>
+	
+  <footer style="background-color:#9A0909; grid-area: footer; color: white; padding: 20px; text-align: center; border-radius: 18px; box-shadow: 0 2px 8px rgba(0,0,0,0.4); font-size: 1em;">
+    <p>© China Scholarship Information and Chinese Language Learning Resources</p>
+  </footer>
+	
+	<script>
+
+    const dropdowns = document.querySelectorAll('.dropdown');
+
+    dropdowns.forEach(dd => {
+      const btn = dd.querySelector('button');
+      btn.addEventListener('click', evt => {
+        evt.stopPropagation();
+		  
+        dropdowns.forEach(other => {
+          if (other !== dd) other.classList.remove('is-open');
+        });
+		  
+        dd.classList.toggle('is-open');
+      });
+    });
+
+    document.addEventListener('click', () => {
+      dropdowns.forEach(dd => dd.classList.remove('is-open'));
+    });
+  </script>
+	
+	<script>
+const hamburgerBtn = document.getElementById('hamburger');
+const mobileNav = document.getElementById('mobileNav');
+const overlay = document.getElementById('mobileOverlay');
+
+function openNav() {
+  mobileNav.classList.add('open');
+  overlay.classList.add('show');
+  hamburgerBtn.setAttribute('aria-expanded','true');
+  mobileNav.setAttribute('aria-hidden','false');
+  overlay.setAttribute('aria-hidden','false');
+}
+function closeNav() {
+  mobileNav.classList.remove('open');
+  overlay.classList.remove('show');
+  hamburgerBtn.setAttribute('aria-expanded','false');
+  mobileNav.setAttribute('aria-hidden','true');
+  overlay.setAttribute('aria-hidden','true');
+}
+
+hamburgerBtn.addEventListener('click', () => {
+  mobileNav.classList.contains('open') ? closeNav() : openNav();
+});
+
+overlay.addEventListener('click', () => {
+  closeNav();
+  document.querySelectorAll('.mobile-nav .dropdown.open').forEach(li => li.classList.remove('open'));
+});
+
+document.querySelectorAll('.mobile-nav .dropdown .natv-btn').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    const li = btn.parentElement;
+    li.classList.toggle('open');
+    const expanded = li.classList.contains('open');
+    btn.setAttribute('aria-expanded', String(expanded));
+  });
+});
+</script>
+	
+	<script>
+  const modal = document.getElementById("loginModal");
+  const desktopLogin = document.getElementById("desktopLogin");
+  const mobileLogin = document.getElementById("mobileLogin");
+  const closeBtn = document.querySelector(".modal .close");
+  const cancelBtn = document.querySelector(".modal .cancel-btn");
+
+  function openModal() { modal.style.display = "block"; }
+  function closeModal() { modal.style.display = "none"; }
+
+  if (desktopLogin) desktopLogin.addEventListener("click", openModal);
+  if (mobileLogin) mobileLogin.addEventListener("click", openModal);
+  closeBtn.addEventListener("click", closeModal);
+  cancelBtn.addEventListener("click", closeModal);
+
+  window.addEventListener("click", (e) => {
+    if (e.target === modal) closeModal();
+  });
+</script>
+	
+</body>
+</html>
